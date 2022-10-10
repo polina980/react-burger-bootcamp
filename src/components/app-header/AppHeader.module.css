@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  background-color: #1C1C21;
+  max-width: 1920px;
+  height: 88px;
+  justify-content: center;
+}
+
+.navigation {
+  max-width: 1280px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.constructor {
+  display: flex;
+  padding: 16px 20px;
+  margin-right: 8px;
+}
+
+.orders {
+  display: flex;
+  padding: 16px 20px;
+}
+
+.logo {
+  padding: 0 112px;
+}
+
+.empty {
+  min-width: 128px;
+  padding: 16px 20px;
+}
+
+.account {
+  display: flex;
+  padding: 16px 20px;
+  margin-left: 8px;
+}
