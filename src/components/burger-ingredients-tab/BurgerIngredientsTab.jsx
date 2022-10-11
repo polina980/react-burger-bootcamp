@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../burger-ingredients-tab/BurgerIngredientsTab.module.css'
 import BurgerIngredients from '../burger-ingredients/BurgerIngredients.jsx'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 
@@ -20,11 +21,11 @@ export default function BurgerIngredientsTab() {
           Начинки
         </Tab>
       </div>
-      <div>
-        <BurgerIngredients />
+      <div className={styles.largeScroll}>
+        <BurgerIngredients type='bun' />
+        <BurgerIngredients type='sauce' />
+        <BurgerIngredients type='main' />
       </div>
     </section>
   )
 }
-
-// className={styles.largeScroll}

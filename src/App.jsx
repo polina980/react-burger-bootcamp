@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppHeader from './components/app-header/AppHeader.jsx';
 import BurgerIngredientsTab from './components/burger-ingredients-tab/BurgerIngredientsTab.jsx';
 import BurgerConstructor from './components/burger-constructor/BurgerConstructor.jsx';
@@ -12,6 +12,9 @@ export default function App() {
       })
       .catch(console.log)
   }, [])
+
+  // const [ingredients, setIngredients] = useState([]);
+
   return (
     <div>
       <AppHeader />
