@@ -80,7 +80,7 @@ export default function BurgerConstructor() {
       <div className={styles.payment}>
         <div className={styles.price}>
           <p className="text text_type_digits-medium">610</p>
-          <img src={CurrencyIconBig} alt='Currency Icon' />
+          <img src={CurrencyIconBig} alt='Значок валюты' />
         </div>
         <Button type="primary" size="large" htmlType='button'>Оформить заказ</Button>
       </div>
