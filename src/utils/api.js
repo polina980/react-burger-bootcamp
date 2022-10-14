@@ -1,4 +1,10 @@
-import { apiConfig } from '../burger.config';
+export const apiConfig = {
+  baseUrl: `https://norma.nomoreparties.space/api`,
+  ingredients: '/ingredients',
+  defaultHeaders: {
+    'Content-Type': 'application/json'
+  }
+}
 
 class Api {
   constructor({ baseUrl, ingredients, defaultHeaders }) {

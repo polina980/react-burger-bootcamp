@@ -1,8 +1,8 @@
-import styles from './BurgerConstructor.module.css';
-import CurrencyIconBig from '../../images/CurrencyIconBig.png';
-import { ConstructorElement, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components'
+import styles from './burger-constructor.module.css';
+import CurrencyIconBig from '../../images/currency-icon-big.png';
+import { ConstructorElement, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
-export default function BurgerConstructor() {
+export default function BurgerConstructor({ onClick }) {
   return (
     <section className={styles.total}>
       <ul className={styles.ingredientsList}>
@@ -15,6 +15,7 @@ export default function BurgerConstructor() {
             thumbnail={'https://code.s3.yandex.net/react/code/bun-02.png'}
           />
         </li>
+        {/* <ScrollArea> */}
         <div className={styles.smallScroll}>
           <li className={styles.listElement}>
             <DragIcon type="primary" />
@@ -56,7 +57,6 @@ export default function BurgerConstructor() {
               thumbnail={'https://code.s3.yandex.net/react/code/mineral_rings.png'}
             />
           </li>
-
           <li className={styles.listElement}>
             <DragIcon type="primary" />
             <ConstructorElement
@@ -65,7 +65,6 @@ export default function BurgerConstructor() {
               thumbnail={'https://code.s3.yandex.net/react/code/mineral_rings.png'}
             />
           </li>
-
         </div>
         <li className={styles.listElement}>
           <ConstructorElement
@@ -82,7 +81,7 @@ export default function BurgerConstructor() {
           <p className="text text_type_digits-medium">610</p>
           <img src={CurrencyIconBig} alt='Значок валюты' />
         </div>
-        <Button type="primary" size="large" htmlType='button'>Оформить заказ</Button>
+        <Button type="primary" size="large" htmlType='button' onClick={onClick}>Оформить заказ</Button>
       </div>
     </section>
   )
