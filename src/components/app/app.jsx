@@ -12,7 +12,8 @@ import OrderDetails from '../order-details/order-details';
 export default function App() {
 
   const [ingredients, setIngredients] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
+  const [openOrderModal, setOrderOpenModal] = useState();
+  const [openIngredientsModal, setOpenIngredientModal] = useState();
 
   useEffect(() => {
     apiBurger.getIngredients()
@@ -27,32 +28,25 @@ export default function App() {
   }, [])
   console.dir(ingredients)
 
-  const handleOnOrderButton = () => {
-    setOpenModal(true);
-  }
-
-  const handleOnIngredientCard = () => {
-    setOpenModal(true);
-  }
-
-  const closeModal = () => {
-    setOpenModal(false);
-  }
-
   return (
     <>
       <AppHeader />
       <main className={styles.main}>
-        <BurgerIngredients ingredients={ingredients} onClick={handleOnIngredientCard}/>
-        <BurgerConstructor onClick={handleOnOrderButton} />
+        <BurgerIngredients ingredients={ingredients} onClick={setOpenIngredientModal}/>
+        <BurgerConstructor onClick={setOrderOpenModal} />
       </main>
-      {openModal && <Modal onClose={closeModal}>
-        <IngredientDetails ingredient={ingredients} />
-      </Modal>}
 
-      {openModal && <Modal onClose={closeModal}>
+      {!!openIngredientsModal && (
+      <Modal onClose={() => setOpenIngredientModal(false)}>
+        <IngredientDetails ingredient={ingredients} />
+      </Modal>
+      )}
+
+      {!!openOrderModal && (
+      <Modal onClose={() => setOrderOpenModal(false)}>
         <OrderDetails />
-      </Modal>}
+      </Modal>
+      )}
 
     </>
   )
