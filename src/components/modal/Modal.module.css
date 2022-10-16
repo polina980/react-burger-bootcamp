@@ -2,7 +2,7 @@
   display: flex;
   position: absolute;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   width: 720px;
   min-height: 539px;
   max-height: 718px;
@@ -15,8 +15,8 @@
 
 .closeButton {
   position: absolute;
-  top: 60px;
-  right: 40px;
+  top: 57px;
+  right: 37px;
   cursor: pointer;
   background-color: transparent;
   border: none;

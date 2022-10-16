@@ -1,5 +1,5 @@
-.scroll {
-  height: 59vh;
+/* .scroll {
+  height: 63vh;
   margin-top: 40px;
   overflow: hidden;
   overflow-y: auto;
@@ -13,4 +13,4 @@
 
 .scroll::-webkit-scrollbar-thumb {
   background-color: #8585AD;
-}
+} */

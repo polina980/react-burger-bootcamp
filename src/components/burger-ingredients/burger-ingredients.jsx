@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import styles from './burger-ingredients.module.css'
 import PropTypes from 'prop-types';
 import { ingredientType } from '../../utils/components-prop-types.js';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-import ScrollArea from '../scroll-area/scroll-area.jsx';
 import IngredientsSet from '../ingredients-set/ingredients-set.jsx';
 
 export default function BurgerIngredients({ ingredients, onClick }) {
@@ -23,11 +23,11 @@ export default function BurgerIngredients({ ingredients, onClick }) {
           Начинки
         </Tab>
       </div>
-      <ScrollArea>
+      <div className={styles.largeScroll}>
         <IngredientsSet ingredients={ingredients} onClick={onClick} type='bun' title='Булки' />
         <IngredientsSet ingredients={ingredients} onClick={onClick} type='sauce' title='Соусы' />
         <IngredientsSet ingredients={ingredients} onClick={onClick} type='main' title='Начинки' />
-      </ScrollArea>
+      </div>
     </section>
   )
 }

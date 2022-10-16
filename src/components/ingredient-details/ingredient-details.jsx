@@ -1,41 +1,39 @@
 import styles from './ingredient-details.module.css';
-import PropTypes from 'prop-types';
 import { ingredientType } from '../../utils/components-prop-types.js';
 
 export default function IngredientDetails({ ingredient }) {
 
   if (!ingredient) {
     return null
-  } 
-
-    return (
-      <>
-        <h2 className="text text_type_main-large mt-10 ml-10">Детали ингредиента</h2>
-        <img src={ingredient.image_large} alt={ingredient.name} />
-        <h3 className="text text_type_main-medium">{ingredient.name}</h3>
-        <ul className={styles.description}>
-          <div>
-            <p className="text text_type_main-small text_color_inactive">Калории,ккал</p>
-            <p className="text text_type_main-small text_color_inactive">{ingredient.calories}</p>
-          </div>
-          <div>
-            <p className="text text_type_main-small text_color_inactive">Белки, г</p>
-            <p className="text text_type_main-small text_color_inactive">{ingredient.proteins}</p>
-          </div>
-          <div>
-            <p className="text text_type_main-small text_color_inactive">Жиры, г</p>
-            <p className="text text_type_main-small text_color_inactive">{ingredient.fat}</p>
-          </div>
-          <div>
-            <p className="text text_type_main-small text_color_inactive">Углеводы, г</p>
-            <p className="text text_type_main-small text_color_inactive">{ingredient.carbohydrates}</p>
-          </div>
-        </ul>
-      </>
-    )
   }
+
+  return (
+    <div className={styles.details}>
+      <img src={ingredient.image_large} alt={ingredient.name} />
+      <h3 className="text text_type_main-medium mt-4">{ingredient.name}</h3>
+      <ul className={styles.description}>
+        <li>
+          <p className=' text text_type_main-default text_color_inactive mt-8 mb-2'>Калории,ккал</p>
+          <p className=' text text_type_main-default text_color_inactive mb-15'>{ingredient.calories}</p>
+        </li>
+        <li>
+          <p className=' text text_type_main-default text_color_inactive mt-8 mb-2'>Белки, г</p>
+          <p className=' text text_type_main-default text_color_inactive mb-15'>{ingredient.proteins}</p>
+        </li>
+        <li>
+          <p className=' text text_type_main-default text_color_inactive mt-8 mb-2'>Жиры, г</p>
+          <p className=' text text_type_main-default text_color_inactive mb-15'>{ingredient.fat}</p>
+        </li>
+        <li>
+          <p className=' text text_type_main-default text_color_inactive mt-8 mb-2'>Углеводы, г</p>
+          <p className=' text text_type_main-default text_color_inactive mb-15'>{ingredient.carbohydrates}</p>
+        </li>
+      </ul>
+    </div>
+  )
+}
 
 
 IngredientDetails.propTypes = {
-  ingredient: PropTypes.arrayOf(ingredientType).isRequired,
+  ingredient: ingredientType.isRequired,
 }

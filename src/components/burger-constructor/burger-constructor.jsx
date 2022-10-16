@@ -15,7 +15,6 @@ export default function BurgerConstructor({ onClick }) {
             thumbnail={'https://code.s3.yandex.net/react/code/bun-02.png'}
           />
         </li>
-        {/* <ScrollArea> */}
         <div className={styles.smallScroll}>
           <li className={styles.listElement}>
             <DragIcon type="primary" />

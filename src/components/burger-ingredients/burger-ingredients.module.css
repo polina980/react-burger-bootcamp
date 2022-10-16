@@ -1,0 +1,16 @@
+.largeScroll {
+  height: 63vh;
+  margin-top: 40px;
+  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.largeScroll::-webkit-scrollbar {
+  width: 8px;
+  background-color: #2F2F37;
+}
+
+.largeScroll::-webkit-scrollbar-thumb {
+  background-color: #8585AD;
+}

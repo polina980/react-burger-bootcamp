@@ -12,6 +12,7 @@ import OrderDetails from '../order-details/order-details';
 export default function App() {
 
   const [ingredients, setIngredients] = useState([]);
+  const [element, setElement] = useState();
   const [openOrderModal, setOrderOpenModal] = useState();
   const [openIngredientsModal, setOpenIngredientModal] = useState();
 
@@ -28,24 +29,29 @@ export default function App() {
   }, [])
   console.dir(ingredients)
 
+  const handleElementModal = (event, element) => {
+    setOpenIngredientModal(!openIngredientsModal);
+    setElement(element);
+  }
+
   return (
     <>
       <AppHeader />
       <main className={styles.main}>
-        <BurgerIngredients ingredients={ingredients} onClick={setOpenIngredientModal}/>
+        <BurgerIngredients ingredients={ingredients} onClick={handleElementModal} />
         <BurgerConstructor onClick={setOrderOpenModal} />
       </main>
 
       {!!openIngredientsModal && (
-      <Modal onClose={() => setOpenIngredientModal(false)}>
-        <IngredientDetails ingredient={ingredients} />
-      </Modal>
+        <Modal onClose={() => setOpenIngredientModal(false)} title='Детали ингредиента'>
+          <IngredientDetails ingredient={element} />
+        </Modal>
       )}
 
       {!!openOrderModal && (
-      <Modal onClose={() => setOrderOpenModal(false)}>
-        <OrderDetails />
-      </Modal>
+        <Modal onClose={() => setOrderOpenModal(false)}>
+          <OrderDetails />
+        </Modal>
       )}
 
     </>

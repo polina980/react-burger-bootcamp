@@ -4,7 +4,7 @@ import styles from './modal.module.css';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import ModalOverlay from '../modal-overlay/modal-overlay.jsx';
 
-export default function Modal({ children, onClose }) {
+export default function Modal({ children, onClose, title }) {
 
   useEffect(() => {
     function onKeyDown(event) {
@@ -24,6 +24,7 @@ export default function Modal({ children, onClose }) {
     <>
       <ModalOverlay onClose={onClose} />
       <div className={styles.modal}>
+        <h2 className="text text_type_main-large mt-10 ml-10">{title}</h2>
         <button className={styles.closeButton} onClick={onClose}>
           <CloseIcon type="primary" />
         </button>

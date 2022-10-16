@@ -1,11 +1,10 @@
-import React from "react";
 import styles from './ingredient-card.module.css';
 import { ingredientType } from '../../utils/components-prop-types.js';
 import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 
 export default function IngredientCard({ ingredient, onClick }) {
   return (
-    <button className={styles.cardButton} onClick={onClick}>
+    <button className={styles.cardButton} onClick={(event) => onClick(event, ingredient)}>
       <img src={ingredient.image} alt={ingredient.name} />
       <Counter id={ingredient._id} count={ingredient.count} size="small" />
       <div style={{ display: 'flex', alignItems: 'flex-end' }}>

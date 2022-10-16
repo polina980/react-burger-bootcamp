@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin: 40px 16px 52px 0;
+  margin: 40px 16px 0 0;
 }
 
 .price {
@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  height: 35vh;
+  height: 36vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -49,11 +49,4 @@
 
 .smallScroll::-webkit-scrollbar-thumb {
   background-color: #8585AD;
-}
-
-/* 1536px */
-@media screen and (min-width: 1536px) {
-  .smallScroll {
-    height: 36vh;
-  }
 }
