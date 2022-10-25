@@ -7,27 +7,47 @@ import { apiBurger } from '../../utils/api.js';
 import Modal from '../modal/modal.jsx';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 import OrderDetails from '../order-details/order-details';
+import { GET_INGREDIENTS_SUCCESS } from '../../services/actions/ingredients-list';
+import { GET_ORDER_SUCCESS } from '../../services/actions/order-details';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 export default function App() {
 
-  const [ingredients, setIngredients] = useState([]);
+//  const [ingredients, setIngredients] = useState([]);
   const [element, setElement] = useState();
   const [openOrderModal, setOrderOpenModal] = useState();
   const [openIngredientsModal, setOpenIngredientModal] = useState();
 
+  const dispatch = useDispatch();
+  const ingredients = useSelector(state => state.ingredientsList.ingredientsList);
+
   useEffect(() => {
     apiBurger.getIngredients()
-      .then(({ success, data }) => {
-        if (success) {
-          setIngredients(data)
-        }
+    .then(({ data }) => {
+      dispatch({
+        type: GET_INGREDIENTS_SUCCESS,
+        data
       })
+    })
       .catch((error) => {
         console.log(error)
       })
   }, [])
   console.dir(ingredients)
+
+  useEffect(() => {
+    apiBurger.requestOrderDetails()
+      .then(({ order }) => {
+        dispatch({
+          type: GET_ORDER_SUCCESS,
+          id: order.number
+        })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [])
 
   const handleElementModal = (event, element) => {
     setOpenIngredientModal(!openIngredientsModal);
@@ -53,7 +73,6 @@ export default function App() {
           <OrderDetails />
         </Modal>
       )}
-
     </>
   )
 }
