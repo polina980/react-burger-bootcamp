@@ -43,10 +43,10 @@ class Api {
     const options = {
       method: 'POST',
       headers: this._defaultHeaders,
-      // body: JSON.stringify({
-      //   // ingredients: idList
-      //   "ingredients": ["609646e4dc916e00276b286e", "609646e4dc916e00276b2870"]
-      // })
+      body: JSON.stringify({
+        // ingredients: idList
+        "ingredients": ["609646e4dc916e00276b286e", "609646e4dc916e00276b2870"]
+      })
     }
     return fetch(this._makeUrl(this._orderEndpoint), options)
       .then(this._handleResponse);
