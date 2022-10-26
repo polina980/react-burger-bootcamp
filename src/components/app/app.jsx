@@ -10,17 +10,29 @@ import OrderDetails from '../order-details/order-details';
 import { GET_INGREDIENTS_SUCCESS } from '../../services/actions/ingredients-list';
 import { GET_ORDER_SUCCESS } from '../../services/actions/order-details';
 import { useDispatch, useSelector } from 'react-redux';
+import { getIngredientsSuccess } from '../../services/actions/ingredients-list'
+import { setIgredientDetails } from '../../services/actions/ingredient-details';
 
 
 export default function App() {
 
-  const [element, setElement] = useState();
+//  const [element, setElement] = useState(false);
   const [openOrderModal, setOrderOpenModal] = useState();
   const [openIngredientsModal, setOpenIngredientModal] = useState();
 
   const dispatch = useDispatch();
   const ingredients = useSelector(state => state.ingredientsList.ingredientsList);
   const idList = (ingredients.map(element => element._id))
+
+  // useEffect(() => {
+  //   apiBurger.getIngredients()
+  //     .then(({ data }) => {
+  //       dispatch(getIngredientsSuccess(data))
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     })
+  // }, [])
 
   useEffect(() => {
     apiBurger.getIngredients()
@@ -35,12 +47,13 @@ export default function App() {
       })
   }, [])
 
-  useEffect(() => {
+  const handleOrderOpenModal = (() => {
+    setOrderOpenModal(true)
     apiBurger.requestOrderDetails(idList)
       .then(({ order }) => {
         dispatch({
           type: GET_ORDER_SUCCESS,
-          id: order.number
+          id: order.number,
         })
       })
       .catch((error) => {
@@ -48,9 +61,9 @@ export default function App() {
       })
   })
 
-  const handleElementModal = (event, element) => {
+  const handleElementModal = (ingredient) => {
     setOpenIngredientModal(!openIngredientsModal);
-    setElement(element);
+    dispatch(setIgredientDetails(ingredient))
   }
 
   return (
@@ -58,12 +71,12 @@ export default function App() {
       <AppHeader />
       <main className={styles.main}>
         <BurgerIngredients ingredients={ingredients} onClick={handleElementModal} />
-        <BurgerConstructor onClick={setOrderOpenModal} />
+        <BurgerConstructor onClick={handleOrderOpenModal} />
       </main>
 
       {!!openIngredientsModal && (
         <Modal onClose={() => setOpenIngredientModal(false)} title='Детали ингредиента'>
-          <IngredientDetails ingredient={element} />
+          <IngredientDetails />
         </Modal>
       )}
 

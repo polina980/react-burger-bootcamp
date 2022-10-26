@@ -19,9 +19,9 @@ class Api {
     return `${this._baseUrl}${endpoint}`;
   }
 
-  // _request(url, options) {
-  //   return fetch(url, options).then(this._handleResponse)
-  // }
+  _request(url, options) {
+    return fetch(url, options).then(this._handleResponse)
+  }
 
   _handleResponse(res) {
     if (res.ok) {
@@ -35,8 +35,7 @@ class Api {
       method: 'GET',
       headers: this._defaultHeaders
     }
-    return fetch(this._makeUrl(this._ingredientsEndpoint), options)
-      .then(this._handleResponse);
+    return this._request(this._makeUrl(this._ingredientsEndpoint), options)
   }
 
   requestOrderDetails(idList) {
@@ -47,8 +46,7 @@ class Api {
         ingredients: idList
       })
     }
-    return fetch(this._makeUrl(this._orderEndpoint), options)
-      .then(this._handleResponse);
+    return this._request(this._makeUrl(this._orderEndpoint), options)
   }
 }
 

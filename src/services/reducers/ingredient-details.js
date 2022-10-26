@@ -9,13 +9,13 @@ export const ingredientDetailsReducer = (state = ingredientDetailsState, action)
     case SET_INGREDIENT_DETAILS: {
       return {
         ...state,
-
+        ingredientDetails: action.ingredient
       }
     }
     case DELETE_INGREDIENT_DETAILS: {
       return {
         ...state,
-
+        ingredientDetails: {}
       }
     }
     default: {
