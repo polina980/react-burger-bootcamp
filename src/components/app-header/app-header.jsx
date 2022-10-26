@@ -6,14 +6,14 @@ export default function AppHeader() {
     <header className={styles.header}>
       <nav className={styles.headerNavigation}>
         <ul className={styles.navigationList}>
-          <div style={{ display: 'flex' }}>
+          <div className={styles.twoBlocks}>
             <li className={styles.constructor}>
               <BurgerIcon type="primary" />
-              <a href='#' className='text text_type_main-default ml-2' style={{ textDecoration: 'none', color: '#fff' }}>Конструктор</a>
+              <a href='#' className={`${styles.constructorText} text text_type_main-default ml-2`}>Конструктор</a>
             </li>
             <li className={styles.orders}>
               <ListIcon type="secondary" />
-              <a href='#' className='text text_type_main-default ml-2 text_color_inactive' style={{ textDecoration: 'none' }}>Лента заказов</a>
+              <a href='#' className={`${styles.ordersText}text text_type_main-default ml-2 text_color_inactive`}>Лента заказов</a>
             </li>
           </div>
           <li className={styles.logo}>
@@ -21,7 +21,7 @@ export default function AppHeader() {
           </li>
           <li className={styles.account}>
             <ProfileIcon type="secondary" />
-            <a href='#' className='text text_type_main-default ml-2 text_color_inactive' style={{ textDecoration: 'none' }}>Личный кабинет</a>
+            <a href='#' className={`${styles.accountText}text text_type_main-default ml-2 text_color_inactive`}>Личный кабинет</a>
           </li>
         </ul>
       </nav>

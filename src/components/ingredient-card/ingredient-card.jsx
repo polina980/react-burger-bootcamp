@@ -1,5 +1,6 @@
 import styles from './ingredient-card.module.css';
-import { ingredientType } from '../../utils/components-prop-types.js';
+import PropTypes from 'prop-types';
+import { ingredientType } from '../../utils/components-prop-types';
 import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 
 export default function IngredientCard({ ingredient, onClick }) {
@@ -7,7 +8,7 @@ export default function IngredientCard({ ingredient, onClick }) {
     <button className={styles.cardButton} onClick={(event) => onClick(event, ingredient)}>
       <img src={ingredient.image} alt={ingredient.name} />
       <Counter id={ingredient._id} count={ingredient.count} size="small" />
-      <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+      <div className={styles.priceBlock}>
         <p className="text text_type_digits-default pt-2 pr-2">{ingredient.price}</p>
         <CurrencyIcon type="primary" />
       </div>
@@ -18,4 +19,5 @@ export default function IngredientCard({ ingredient, onClick }) {
 
 IngredientCard.propTypes = {
   ingredient: ingredientType.isRequired,
+  onClick: PropTypes.func.isRequired
 }

@@ -7,3 +7,8 @@
   border: 0;
   cursor: pointer;
 }
+
+.priceBlock {
+  display: flex;
+  align-items: flex-end;
+}

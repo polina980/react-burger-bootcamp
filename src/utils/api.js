@@ -1,6 +1,3 @@
-import { element } from "prop-types";
-import { useSelector } from "react-redux";
-
 export const apiConfig = {
   baseUrl: `https://norma.nomoreparties.space/api`,
   ingredients: '/ingredients',
@@ -22,6 +19,10 @@ class Api {
     return `${this._baseUrl}${endpoint}`;
   }
 
+  // _request(url, options) {
+  //   return fetch(url, options).then(this._handleResponse)
+  // }
+
   _handleResponse(res) {
     if (res.ok) {
       return res.json();
@@ -38,14 +39,12 @@ class Api {
       .then(this._handleResponse);
   }
 
-  requestOrderDetails() {
-  //  const idList = (data.map(element => element._id))
+  requestOrderDetails(idList) {
     const options = {
       method: 'POST',
       headers: this._defaultHeaders,
       body: JSON.stringify({
-        // ingredients: idList
-        "ingredients": ["609646e4dc916e00276b286e", "609646e4dc916e00276b2870"]
+        ingredients: idList
       })
     }
     return fetch(this._makeUrl(this._orderEndpoint), options)

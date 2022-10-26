@@ -1,5 +1,6 @@
 import styles from './burger-constructor.module.css';
 import CurrencyIconBig from '../../images/currency-icon-big.png';
+import PropTypes from 'prop-types';
 import { ConstructorElement, DragIcon, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 export default function BurgerConstructor({ onClick }) {
@@ -84,4 +85,8 @@ export default function BurgerConstructor({ onClick }) {
       </div>
     </section>
   )
+}
+
+BurgerConstructor.propTypes = {
+  onClick: PropTypes.func.isRequired
 }

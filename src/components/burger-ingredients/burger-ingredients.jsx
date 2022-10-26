@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './burger-ingredients.module.css'
 import PropTypes from 'prop-types';
-import { ingredientType } from '../../utils/components-prop-types.js';
+import { ingredientType } from '../../utils/components-prop-types';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-import IngredientsSet from '../ingredients-set/ingredients-set.jsx';
+import IngredientsSet from '../ingredients-set/ingredients-set';
 
 export default function BurgerIngredients({ ingredients, onClick }) {
 
@@ -57,7 +57,7 @@ export default function BurgerIngredients({ ingredients, onClick }) {
       <h3 className="text text_type_main-large mt-10 mb-5">
         Соберите бургер
       </h3>
-      <div style={{ display: 'flex' }}>
+      <div className={styles.sectionTab}>
         <Tab value='bun' active={current === 'bun'} onClick={() => scrollToRef('bun')}>
           Булки
         </Tab>
@@ -79,4 +79,5 @@ export default function BurgerIngredients({ ingredients, onClick }) {
 
 BurgerIngredients.propTypes = {
   ingredients: PropTypes.arrayOf(ingredientType).isRequired,
+  onClick: PropTypes.func.isRequired
 }
