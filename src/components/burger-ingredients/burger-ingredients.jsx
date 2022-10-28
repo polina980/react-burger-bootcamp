@@ -5,7 +5,7 @@ import { ingredientType } from '../../utils/components-prop-types';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import IngredientsSet from '../ingredients-set/ingredients-set';
 
-export default function BurgerIngredients({ ingredients, onClick }) {
+function BurgerIngredients({ ingredients }) {
 
   const containerRef = useRef();
   const bunRef = useRef();
@@ -15,6 +15,7 @@ export default function BurgerIngredients({ ingredients, onClick }) {
   const [current, setCurrent] = useState('bun');
 
   const scrollToRef = (ref) => {
+
     if (ref === 'bun') {
       bunRef.current.scrollIntoView({ behavior: "smooth" })
     }
@@ -43,13 +44,12 @@ export default function BurgerIngredients({ ingredients, onClick }) {
       }
     }, {
       root: containerRef.current,
-      // rootMargin: ' px'
+      rootMargin: '0px 0px -90% 0px'
     });
 
-    observer.observe(containerRef.current);
-    // observer.observe(bunRef.current);
-    // observer.observe(sauceRef.current);
-    // observer.observe(mainRef.current);
+    observer.observe(bunRef.current);
+    observer.observe(sauceRef.current);
+    observer.observe(mainRef.current);
   }, [])
 
   return (
@@ -69,9 +69,9 @@ export default function BurgerIngredients({ ingredients, onClick }) {
         </Tab>
       </div>
       <div className={styles.largeScroll} ref={containerRef}>
-        <IngredientsSet ingredients={ingredients} onClick={onClick} type='bun' title='Булки' containerRef={bunRef.current} />
-        <IngredientsSet ingredients={ingredients} onClick={onClick} type='sauce' title='Соусы' containerRef={sauceRef.current} />
-        <IngredientsSet ingredients={ingredients} onClick={onClick} type='main' title='Начинки' containerRef={mainRef.current} />
+        <IngredientsSet ingredients={ingredients} type='bun' title='Булки' ref={bunRef} />
+        <IngredientsSet ingredients={ingredients} type='sauce' title='Соусы' ref={sauceRef} />
+        <IngredientsSet ingredients={ingredients} type='main' title='Начинки' ref={mainRef} />
       </div>
     </section>
   )
@@ -79,5 +79,6 @@ export default function BurgerIngredients({ ingredients, onClick }) {
 
 BurgerIngredients.propTypes = {
   ingredients: PropTypes.arrayOf(ingredientType).isRequired,
-  onClick: PropTypes.func.isRequired
 }
+
+export default React.memo(BurgerIngredients); // Чистый компонент!

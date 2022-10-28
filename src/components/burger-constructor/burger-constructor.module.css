@@ -19,25 +19,11 @@
   justify-content: flex-end;
 }
 
-.payment {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 40px 16px 0 0;
-}
-
-.price {
-  display: flex;
-  align-items: center;
-  padding-right: 42px;
-  column-gap: 8px;
-}
-
 .smallScroll {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  height: 36vh;
+  max-height: 36vh;
   overflow-y: auto;
   overflow-x: hidden;
 }

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import ModalOverlay from '../modal-overlay/modal-overlay';
 
-export default function Modal({ children, onClose, title }) {
+function Modal({ children, onClose, title }) {
 
   useEffect(() => {
     function onKeyDown(event) {
@@ -18,7 +18,7 @@ export default function Modal({ children, onClose, title }) {
     return () => {
       document.removeEventListener('keydown', onKeyDown)
     }
-  }, [])
+  }, [onClose])
 
   return createPortal(
     <>
@@ -40,3 +40,5 @@ Modal.propTypes = {
   title: PropTypes.string,
   onClose: PropTypes.func.isRequired
 }
+
+export default React.memo(Modal);

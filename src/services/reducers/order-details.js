@@ -22,7 +22,7 @@ export const orderDetailsReducer = (state = orderDetailsState, action) => {
       return {
         ...state,
         orderError: false,
-        id: action.id
+        id: action.number
       }
     }
     case GET_ORDER_ERROR: {

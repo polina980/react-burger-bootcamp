@@ -3,3 +3,8 @@
   justify-content: center;
   gap: 41.5px;
 }
+
+.twoBlocks {
+  display: flex;
+  flex-direction: column;
+}

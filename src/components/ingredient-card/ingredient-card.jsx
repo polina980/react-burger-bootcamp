@@ -1,11 +1,31 @@
+import React from 'react';
 import styles from './ingredient-card.module.css';
-import PropTypes from 'prop-types';
-import { ingredientType } from '../../utils/components-prop-types';
+// import { ingredientType } from '../../utils/components-prop-types';
 import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
+import { useDispatch } from 'react-redux';
+import { setIgredientDetails } from '../../services/actions/ingredient-details';
+import { useDrag } from 'react-dnd';
+import { useSelector } from 'react-redux';
 
-export default function IngredientCard({ ingredient, onClick }) {
+export default function IngredientCard({ingredient}) {
+
+  // const ingredient = useSelector(state => state.ingredientDetails.ingredientDetails)
+
+  const dispatch = useDispatch();
+  const handleIngredientClick = () => {
+    dispatch(setIgredientDetails(ingredient))
+  }
+
+const [ , drag ] = useDrag(() => ({
+      type: 'card',
+      item: { ingredient,
+        id: ingredient._id,
+        type: ingredient.type
+       },
+    }), [])
+
   return (
-    <button className={styles.cardButton} onClick={(event) => onClick(event, ingredient)}>
+    <button className={styles.cardButton} onClick={handleIngredientClick} ref={drag}>
       <img src={ingredient.image} alt={ingredient.name} />
       <Counter id={ingredient._id} count={ingredient.count} size="small" />
       <div className={styles.priceBlock}>
@@ -17,7 +37,6 @@ export default function IngredientCard({ ingredient, onClick }) {
   )
 }
 
-IngredientCard.propTypes = {
-  ingredient: ingredientType.isRequired,
-  onClick: PropTypes.func.isRequired
-}
+// IngredientCard.propTypes = {
+//   ingredient: ingredientType.isRequired,
+// }
