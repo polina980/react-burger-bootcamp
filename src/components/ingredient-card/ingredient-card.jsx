@@ -1,6 +1,4 @@
-import React from 'react';
 import styles from './ingredient-card.module.css';
-// import { ingredientType } from '../../utils/components-prop-types';
 import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useDispatch } from 'react-redux';
 import { setIgredientDetails } from '../../services/actions/ingredient-details';
@@ -8,15 +6,16 @@ import { useDrag } from 'react-dnd';
 import { useSelector } from 'react-redux';
 
 export default function IngredientCard({ingredient}) {
-
-  // const ingredient = useSelector(state => state.ingredientDetails.ingredientDetails)
-
+  
+  const elements = useSelector(state => state.constructorList.constructorList);
+  const buns = useSelector(state => state.constructorList.buns);
+  const count = elements.filter(element => element._id === ingredient._id).length || buns.filter(element => element._id === ingredient._id).length
   const dispatch = useDispatch();
   const handleIngredientClick = () => {
     dispatch(setIgredientDetails(ingredient))
   }
 
-const [ , drag ] = useDrag(() => ({
+const [ , dragIngredient ] = useDrag(() => ({
       type: 'card',
       item: { ingredient,
         id: ingredient._id,
@@ -25,9 +24,10 @@ const [ , drag ] = useDrag(() => ({
     }), [])
 
   return (
-    <button className={styles.cardButton} onClick={handleIngredientClick} ref={drag}>
+  
+    <button className={styles.cardButton} onClick={handleIngredientClick} ref={dragIngredient}>
       <img src={ingredient.image} alt={ingredient.name} />
-      <Counter id={ingredient._id} count={ingredient.count} size="small" />
+      {count > 0 ? <div className={styles.counter}><Counter id={ingredient._id} count={count} size="small" /></div> : null}
       <div className={styles.priceBlock}>
         <p className="text text_type_digits-default pt-2 pr-2">{ingredient.price}</p>
         <CurrencyIcon type="primary" />
@@ -36,7 +36,3 @@ const [ , drag ] = useDrag(() => ({
     </button>
   )
 }
-
-// IngredientCard.propTypes = {
-//   ingredient: ingredientType.isRequired,
-// }

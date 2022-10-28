@@ -8,7 +8,7 @@ import {
 
 export const ingredientsConstructorState = {
   constructorList: [], // список элементов конструктора
-  bun: null
+  buns: []
 }
 
 export const constructorListReducer = (state = ingredientsConstructorState, action) => {
@@ -16,7 +16,7 @@ export const constructorListReducer = (state = ingredientsConstructorState, acti
     case SET_BUN: {
       return {
         ...state,
-        bun: action.payload
+        buns: state.buns.find(item => item._id === action.payload._id) ? [...state.buns] : [action.payload]
       }
     }
     case ADD_INGREDIENT: {

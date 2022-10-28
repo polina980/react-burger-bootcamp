@@ -22,6 +22,8 @@ export default function App() {
   const ingredients = useSelector(state => state.ingredientsList.ingredientsList);
   const idList = (ingredients.map(element => element._id))
 
+  const buns = useSelector(state => state.constructorList.buns)
+
   useEffect(() => {
     apiBurger.getIngredients()
       .then(({ data }) => {
@@ -58,7 +60,9 @@ export default function App() {
         <BurgerIngredients ingredients={ingredients} />
         <div className={styles.twoBlocks}>
           <BurgerConstructor />
-          <PriceCount onClick={handleOrderOpenModal} />
+          {buns.length > 0 ?
+          <PriceCount onClick={handleOrderOpenModal} /> 
+          : null}
         </div>
       </main>
 
