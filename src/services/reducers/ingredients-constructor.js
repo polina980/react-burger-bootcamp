@@ -34,11 +34,7 @@ export const constructorListReducer = (state = ingredientsConstructorState, acti
     case MOVE_INGREDIENT: {
 
       let res = [];
-      // res = [1, 2, 3, 5, 6, 6, 7]
-      // action.payload = {
-      //   start: 5,
-      //   end: 3
-      // }
+
       const { start, end } = action.payload;
       if (start === end) {
         return state
@@ -50,7 +46,6 @@ export const constructorListReducer = (state = ingredientsConstructorState, acti
           ...state.constructorList.slice(start + 1),
         ];
       } else { // start < end
-
         res = [
           ...state.constructorList.slice(0, start),
           ...state.constructorList.slice(start + 1, end + 1),
@@ -58,7 +53,6 @@ export const constructorListReducer = (state = ingredientsConstructorState, acti
           ...state.constructorList.slice(end + 1)
         ]
       }
-
       return {
         ...state,
         constructorList: res

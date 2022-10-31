@@ -97,7 +97,7 @@ export default function BurgerElement({ deleteElement, element, id, index }) {
 
 BurgerElement.propTypes = {
   deleteElement: PropTypes.func.isRequired,
-  element: PropTypes.arrayOf(ingredientType).isRequired,
+  element: ingredientType.isRequired,
   id: PropTypes.string,
   index: PropTypes.number.isRequired,
 }

@@ -3,7 +3,9 @@ import done from '../../images/done.png';
 import styles from './order-details.module.css';
 
 export default function OrderDetails() {
+
   const orderId = useSelector(state => state.orderDetails.id)
+
   return (
     <div className={styles.order}>
       <h3 className={`${styles.orderTitle} text text_type_digits-large mt-20`}>{orderId}</h3>
