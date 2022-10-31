@@ -53,9 +53,9 @@ export const constructorListReducer = (state = ingredientsConstructorState, acti
 
         res = [
           ...state.constructorList.slice(0, start),
-          ...state.constructorList.slice(start + 1, end),
+          ...state.constructorList.slice(start + 1, end + 1),
           state.constructorList[start],
-          ...state.constructorList.slice(end)
+          ...state.constructorList.slice(end + 1)
         ]
       }
 

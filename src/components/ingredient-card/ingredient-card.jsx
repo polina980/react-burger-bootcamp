@@ -4,27 +4,33 @@ import { useDispatch } from 'react-redux';
 import { setIgredientDetails } from '../../services/actions/ingredient-details';
 import { useDrag } from 'react-dnd';
 import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
 
-export default function IngredientCard({ingredient}) {
-  
+export default function IngredientCard({ ingredient }) {
+
   const elements = useSelector(state => state.constructorList.constructorList);
   const buns = useSelector(state => state.constructorList.buns);
-  const count = elements.filter(element => element._id === ingredient._id).length || buns.filter(element => element._id === ingredient._id).length
+
+  const count = useMemo(() => (
+    elements.filter(element => element._id === ingredient._id).length || buns.filter(element => element._id === ingredient._id).length * 2
+  ), [buns, elements, ingredient._id]);
+
   const dispatch = useDispatch();
   const handleIngredientClick = () => {
     dispatch(setIgredientDetails(ingredient))
   }
 
-const [ , dragIngredient ] = useDrag(() => ({
-      type: 'card',
-      item: { ingredient,
-        id: ingredient._id,
-        type: ingredient.type
-       },
-    }), [])
+  const [, dragIngredient] = useDrag(() => ({
+    type: 'card',
+    item: {
+      ingredient,
+      id: ingredient._id,
+      type: ingredient.type
+    },
+  }), [])
 
   return (
-  
+
     <button className={styles.cardButton} onClick={handleIngredientClick} ref={dragIngredient}>
       <img src={ingredient.image} alt={ingredient.name} />
       {count > 0 ? <div className={styles.counter}><Counter id={ingredient._id} count={count} size="small" /></div> : null}

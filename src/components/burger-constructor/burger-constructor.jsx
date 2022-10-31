@@ -1,32 +1,22 @@
 import styles from './burger-constructor.module.css';
-import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useDrag, useDrop } from 'react-dnd';
+import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
+import { useDrop } from 'react-dnd';
 import { nanoid } from 'nanoid';
 import { setBun, addIngredient, deleteIngredient, moveIngredient } from '../../services/actions/ingredients-constructor';
 import { useDispatch, useSelector } from 'react-redux';
+import BurgerElement from '../burger-element/burger-element';
 
-export default function BurgerConstructor(element) {
+export default function BurgerConstructor() {
   const elements = useSelector(state => state.constructorList.constructorList)
   const buns = useSelector(state => state.constructorList.buns)
   const dispatch = useDispatch();
   console.log(elements)
   console.log(buns)
 
-///////////////////
-  const [ , dragConstructor ] = useDrag(() => ({
-    type: 'item',
-    // item: { element,
-      // id: element._id,
-      // type: element.type
-    //  },
-  }), [])
-
-
   const [, dropConstructor] = useDrop(() => ({
     accept: 'item',
     drop: (item => moveIngredient(item.ingredient))
   }))
-//////////////
 
   const [, dropIngredient] = useDrop(() => ({
     accept: 'card',
@@ -64,21 +54,13 @@ export default function BurgerConstructor(element) {
               />
             </li>
         })}
-        <div className={styles.smallScroll} ref={dropConstructor}>
-          {elements.map((element) => {
+        <li className={styles.smallScroll} ref={dropConstructor}>
+          {elements.map((element, index) => {
             if (element.type !== 'bun')
-              return <li className={styles.listElement} key={element.id} ref={dragConstructor}>
-                <DragIcon type="primary" />
-                <ConstructorElement
-                  handleClose={() => deleteElement(element)}
-                  text={element.name}
-                  price={element.price}
-                  thumbnail={element.image}
-                />
-              </li>
+              return <BurgerElement element={element} index={index} id={element.id} key={element.id} deleteElement={deleteElement} />
           }
           )}
-        </div>
+        </li>
         {buns.map((element) => {
           if (element.type === 'bun')
             return <li className={styles.listElement} key={element.id}>

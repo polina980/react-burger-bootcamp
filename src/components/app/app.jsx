@@ -61,8 +61,8 @@ export default function App() {
         <div className={styles.twoBlocks}>
           <BurgerConstructor />
           {buns.length > 0 ?
-          <PriceCount onClick={handleOrderOpenModal} /> 
-          : null}
+            <PriceCount onClick={handleOrderOpenModal} />
+            : null}
         </div>
       </main>
 
