@@ -8,7 +8,6 @@ export const ingredientsListState = {
   ingredientsList: [],
   ingredientsRequest: false,
   ingredientsError: false,
-  current: 'bun'
 }
 
 export const ingredientsListReducer = (state = ingredientsListState, action) => {

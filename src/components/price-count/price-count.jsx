@@ -5,7 +5,7 @@ import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
 
-export default function PriceCount({ onClick }) {
+export function PriceCount({ onClick }) {
 
     const elements = useSelector(state => state.constructorList.constructorList);
     const buns = useSelector(state => state.constructorList.buns);

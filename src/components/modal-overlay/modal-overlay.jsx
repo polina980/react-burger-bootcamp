@@ -1,7 +1,7 @@
 import styles from './modal-overlay.module.css';
 import PropTypes from 'prop-types';
 
-export default function ModalOverlay({ onClose }) {
+export function ModalOverlay({ onClose }) {
 
   const closeModalOverlay = (event) => {
     if (event.target.classList.contains(styles.overlay)) {

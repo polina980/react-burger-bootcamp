@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styles from './burger-ingredients.module.css'
-import PropTypes from 'prop-types';
-import { ingredientType } from '../../utils/components-prop-types';
+import styles from './burger-ingredients.module.css';
+import { IngredientsSet } from '../ingredients-set/ingredients-set';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-import IngredientsSet from '../ingredients-set/ingredients-set';
 
-function BurgerIngredients({ ingredients }) {
+function BurgerIngredientsFunction() {
 
   const containerRef = useRef();
   const bunRef = useRef();
@@ -69,16 +67,12 @@ function BurgerIngredients({ ingredients }) {
         </Tab>
       </div>
       <div className={styles.largeScroll} ref={containerRef}>
-        <IngredientsSet ingredients={ingredients} type='bun' title='Булки' ref={bunRef} />
-        <IngredientsSet ingredients={ingredients} type='sauce' title='Соусы' ref={sauceRef} />
-        <IngredientsSet ingredients={ingredients} type='main' title='Начинки' ref={mainRef} />
+        <IngredientsSet type='bun' title='Булки' ref={bunRef} />
+        <IngredientsSet type='sauce' title='Соусы' ref={sauceRef} />
+        <IngredientsSet type='main' title='Начинки' ref={mainRef} />
       </div>
     </section>
   )
 }
 
-BurgerIngredients.propTypes = {
-  ingredients: PropTypes.arrayOf(ingredientType).isRequired,
-}
-
-export default React.memo(BurgerIngredients); // Чистый компонент!
+export const BurgerIngredients = React.memo(BurgerIngredientsFunction);

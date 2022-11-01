@@ -1,12 +1,11 @@
 import styles from './ingredient-card.module.css';
-import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useDispatch } from 'react-redux';
-import { setIgredientDetails } from '../../services/actions/ingredient-details';
 import { useDrag } from 'react-dnd';
-import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
+import { setIgredientDetails } from '../../services/actions/ingredient-details';
 
-export default function IngredientCard({ ingredient }) {
+export function IngredientCard({ ingredient }) {
 
   const elements = useSelector(state => state.constructorList.constructorList);
   const buns = useSelector(state => state.constructorList.buns);
@@ -30,7 +29,6 @@ export default function IngredientCard({ ingredient }) {
   }), [])
 
   return (
-
     <button className={styles.cardButton} onClick={handleIngredientClick} ref={dragIngredient}>
       <img src={ingredient.image} alt={ingredient.name} />
       {count > 0 ? <div className={styles.counter}><Counter id={ingredient._id} count={count} size="small" /></div> : null}

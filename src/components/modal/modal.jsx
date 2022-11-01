@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import styles from './modal.module.css';
 import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import ModalOverlay from '../modal-overlay/modal-overlay';
+import { ModalOverlay } from '../modal-overlay/modal-overlay';
 
-function Modal({ children, onClose, title }) {
+function ModalFunction({ children, onClose, title }) {
 
   useEffect(() => {
     function onKeyDown(event) {
@@ -35,10 +35,10 @@ function Modal({ children, onClose, title }) {
   )
 }
 
-Modal.propTypes = {
+ModalFunction.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   onClose: PropTypes.func.isRequired
 }
 
-export default React.memo(Modal);
+export const Modal = React.memo(ModalFunction);

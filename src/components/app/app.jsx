@@ -1,48 +1,36 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import styles from './app.module.css';
-import AppHeader from '../app-header/app-header';
-import BurgerIngredients from '../burger-ingredients/burger-ingredients';
-import BurgerConstructor from '../burger-constructor/burger-constructor';
-import PriceCount from '../price-count/price-count'
-import { apiBurger } from '../../utils/api';
-import Modal from '../modal/modal';
-import IngredientDetails from '../ingredient-details/ingredient-details';
-import OrderDetails from '../order-details/order-details';
+import { AppHeader } from '../app-header/app-header';
+import { BurgerIngredients } from '../burger-ingredients/burger-ingredients';
+import { BurgerConstructor } from '../burger-constructor/burger-constructor';
+import { PriceCount } from '../price-count/price-count';
+import { Modal } from '../modal/modal';
+import { IngredientDetails } from '../ingredient-details/ingredient-details';
+import { OrderDetails } from '../order-details/order-details';
 import { useDispatch, useSelector } from 'react-redux';
-import { getIngredientsSuccess } from '../../services/actions/ingredients-list';
+import { getIngredientsList } from '../../services/actions/ingredients-list';
 import { deleteIgredientDetails } from '../../services/actions/ingredient-details';
-import { getOrderSuccess } from '../../services/actions/order-details';
-import { HTML5Backend } from 'react-dnd-html5-backend'
-import { DndProvider } from 'react-dnd'
+import { getOrderNumber } from '../../services/actions/order-details';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
+import { clearConstructor } from '../../services/actions/ingredients-constructor';
 
-export default function App() {
+export function App() {
+
   const [openOrderModal, setOrderOpenModal] = useState();
   const openIngredientsModal = useSelector(state => !!state.ingredientDetails.ingredientDetails);
-  const dispatch = useDispatch();
+  const buns = useSelector(state => state.constructorList.buns);
   const ingredients = useSelector(state => state.ingredientsList.ingredientsList);
-  const idList = (ingredients.map(element => element._id))
-
-  const buns = useSelector(state => state.constructorList.buns)
+  const idList = (ingredients.map(element => element._id));
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    apiBurger.getIngredients()
-      .then(({ data }) => {
-        dispatch(getIngredientsSuccess(data));
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    dispatch(getIngredientsList())
   }, [dispatch])
 
   const handleOrderOpenModal = (() => {
     setOrderOpenModal(true)
-    apiBurger.requestOrderDetails(idList)
-      .then(({ order: { number } }) => {
-        dispatch(getOrderSuccess(number));
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    dispatch(getOrderNumber(idList))
   })
 
   const closeIngredientsModal = useCallback(() => {
@@ -51,13 +39,14 @@ export default function App() {
 
   const closeOrderModal = useCallback(() => {
     setOrderOpenModal(false)
+    dispatch(clearConstructor())
   }, [])
 
   return (
     <DndProvider backend={HTML5Backend}>
       <AppHeader />
       <main className={styles.main}>
-        <BurgerIngredients ingredients={ingredients} />
+        <BurgerIngredients />
         <div className={styles.twoBlocks}>
           <BurgerConstructor />
           {buns.length > 0 ?

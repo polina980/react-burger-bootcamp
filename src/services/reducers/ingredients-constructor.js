@@ -2,12 +2,13 @@ import {
   SET_BUN,
   ADD_INGREDIENT,
   DELETE_INGREDIENT,
-  MOVE_INGREDIENT
+  MOVE_INGREDIENT,
+  CLEAR_CONSTRUCTOR
 }
   from '../actions/ingredients-constructor';
 
 export const ingredientsConstructorState = {
-  constructorList: [], // список элементов конструктора
+  constructorList: [],
   buns: []
 }
 
@@ -56,6 +57,12 @@ export const constructorListReducer = (state = ingredientsConstructorState, acti
       return {
         ...state,
         constructorList: res
+      }
+    }
+    case CLEAR_CONSTRUCTOR: {
+      return {
+        ...state,
+        constructorList: []
       }
     }
     default: {

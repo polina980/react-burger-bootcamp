@@ -2,7 +2,6 @@ import { SET_INGREDIENT_DETAILS, DELETE_INGREDIENT_DETAILS } from '../actions/in
 
 export const ingredientDetailsState = {
   ingredientDetails: null
-
 }
 
 export const ingredientDetailsReducer = (state = ingredientDetailsState, action) => {

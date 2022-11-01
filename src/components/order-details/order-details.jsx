@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import done from '../../images/done.png';
 import styles from './order-details.module.css';
 
-export default function OrderDetails() {
+export function OrderDetails() {
 
   const orderId = useSelector(state => state.orderDetails.id)
 
