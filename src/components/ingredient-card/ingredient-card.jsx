@@ -31,7 +31,7 @@ export function IngredientCard({ ingredient }) {
   return (
     <button className={styles.cardButton} onClick={handleIngredientClick} ref={dragIngredient}>
       <img src={ingredient.image} alt={ingredient.name} />
-      {count > 0 ? <div className={styles.counter}><Counter id={ingredient._id} count={count} size="small" /></div> : null}
+      {count > 0 ? <Counter id={ingredient._id} count={count} size="small" /> : null}
       <div className={styles.priceBlock}>
         <p className="text text_type_digits-default pt-2 pr-2">{ingredient.price}</p>
         <CurrencyIcon type="primary" />
