@@ -1,0 +1,13 @@
+.profile {
+    display: grid;
+    grid-template-columns: 320px 480px 320px;
+    column-gap: 60px;
+    justify-content: center;
+    margin-top: 8%;
+}
+
+.profileMenu {
+    display: flex;
+    align-items: center;
+    height: 64px;
+}

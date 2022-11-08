@@ -14,6 +14,8 @@ import { getOrderNumber } from '../../services/actions/order-details';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { clearConstructor } from '../../services/actions/ingredients-constructor';
+import { BrowserRouter as Switch, Route } from 'react-router-dom';
+import { LoginPage, Registration, ForgotRassword, ResetRassword, ProfilePage } from '../../pages/index';
 
 export function App() {
 
@@ -43,17 +45,47 @@ export function App() {
   }, [])
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    <Switch>
+
       <AppHeader />
-      <main className={styles.main}>
-        <BurgerIngredients />
-        <div className={styles.twoBlocks}>
-          <BurgerConstructor />
-          {buns.length > 0 ?
-            <PriceCount onClick={handleOrderOpenModal} />
-            : null}
-        </div>
-      </main>
+
+      <Route path="/login">
+        <LoginPage />
+      </Route>
+
+      <Route path="/register">
+        <Registration />
+      </Route>
+
+      <Route path="/forgot-password">
+        <ForgotRassword />
+      </Route>
+
+      <Route path="/reset-password">
+        <ResetRassword />
+      </Route>
+
+      <Route path="/profile"> {/*ProtectedRoute*/}
+        <ProfilePage />
+      </Route>
+
+      {/* <Route path="/ingredients">
+            <IngredientPage />
+          </Route> */}
+
+      <DndProvider backend={HTML5Backend}>
+        <Route path="/" exact={true}>
+          <main className={styles.main}>
+            <BurgerIngredients />
+            <div className={styles.twoBlocks}>
+              <BurgerConstructor />
+              {buns.length > 0 ?
+                <PriceCount onClick={handleOrderOpenModal} />
+                : null}
+            </div>
+          </main>
+        </Route>
+      </DndProvider>
 
       {openIngredientsModal && (
         <Modal onClose={closeIngredientsModal} title='Детали ингредиента'>
@@ -66,6 +98,6 @@ export function App() {
           <OrderDetails />
         </Modal>
       )}
-    </DndProvider>
+    </Switch>
   )
 }

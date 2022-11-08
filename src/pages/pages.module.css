@@ -1,0 +1,16 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8%;
+}
+
+.line {
+    display: flex;
+    gap: 8px;
+}
+
+.link {
+    text-decoration: none;
+    color: #4C4CFF;
+}
