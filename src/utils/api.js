@@ -60,6 +60,20 @@ class Api {
     }
     return this._request(this._makeUrl(this._orderEndpoint), options)
   }
+
+  registerRequest(username, email, password) {
+    const options = {
+      method: 'POST',
+      headers: this._defaultHeaders,
+      body: JSON.stringify({
+        name: username,
+        email: email,
+        password: password
+      })
+    }
+    return this._request(this._makeUrl(this._registerEndroint), options)
+  }
+
 }
 
 export const apiBurger = new Api(apiConfig);

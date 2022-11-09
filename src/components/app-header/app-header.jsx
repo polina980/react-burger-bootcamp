@@ -20,7 +20,7 @@ function AppHeaderFunction() {
             </li>
           </div>
           <li className={styles.logo}>
-            <Logo />
+            <Link to='/'><Logo /></Link>
           </li>
           <li className={styles.account}>
             <ProfileIcon type="secondary" />

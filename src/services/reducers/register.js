@@ -5,27 +5,29 @@ import {
 } from '../actions/register';
 
 export const registrationState = {
+    name: '',
+    email: '',
     password: '',
-    token: '',
     registrationRequest: false,
     registrationError: false
 }
 
-export const passwordResetReducer = (state = registrationState, action) => {
+export const registrationReducer = (state = registrationState, action) => {
     switch (action.type) {
         case REGISTRATION_REQUEST: {
             return {
                 ...state,
                 registrationRequest: true,
+                registrationError: false,
             }
         }
         case REGISTRATION_SUCCESS: {
             return {
                 ...state,
                 registrationError: false,
-                // email: "test-data@yandex.ru", 
-                // password: "password", 
-                // name: "Username" 
+                name: action.username,
+                email: action.email,
+                password: action.password
             }
         }
         case REGISTRATION_ERROR: {

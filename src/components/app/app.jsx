@@ -14,8 +14,9 @@ import { getOrderNumber } from '../../services/actions/order-details';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { clearConstructor } from '../../services/actions/ingredients-constructor';
-import { BrowserRouter as Switch, Route } from 'react-router-dom';
-import { LoginPage, Registration, ForgotRassword, ResetRassword, ProfilePage } from '../../pages/index';
+import { Switch, Route } from 'react-router-dom';
+
+import { LoginPage, Registration, ForgotRassword, ResetRassword, ProfilePage, IngredientPage } from '../../pages/index';
 
 export function App() {
 
@@ -45,47 +46,48 @@ export function App() {
   }, [])
 
   return (
-    <Switch>
+    <>
+      <Switch>
+        <DndProvider backend={HTML5Backend}>
+          <AppHeader />
 
-      <AppHeader />
+          <Route path="/login">
+            <LoginPage />
+          </Route>
 
-      <Route path="/login">
-        <LoginPage />
-      </Route>
+          <Route path="/register">
+            <Registration />
+          </Route>
 
-      <Route path="/register">
-        <Registration />
-      </Route>
+          <Route path="/forgot-password">
+            <ForgotRassword />
+          </Route>
 
-      <Route path="/forgot-password">
-        <ForgotRassword />
-      </Route>
+          <Route path="/reset-password">
+            <ResetRassword />
+          </Route>
 
-      <Route path="/reset-password">
-        <ResetRassword />
-      </Route>
+          <Route path="/profile"> {/*ProtectedRoute*/}
+            <ProfilePage />
+          </Route>
 
-      <Route path="/profile"> {/*ProtectedRoute*/}
-        <ProfilePage />
-      </Route>
-
-      {/* <Route path="/ingredients">
+          <Route path="/ingredients/:id">
             <IngredientPage />
-          </Route> */}
+          </Route>
 
-      <DndProvider backend={HTML5Backend}>
-        <Route path="/" exact={true}>
-          <main className={styles.main}>
-            <BurgerIngredients />
-            <div className={styles.twoBlocks}>
-              <BurgerConstructor />
-              {buns.length > 0 ?
-                <PriceCount onClick={handleOrderOpenModal} />
-                : null}
-            </div>
-          </main>
-        </Route>
-      </DndProvider>
+          <Route path="/" exact={true}>
+            <main className={styles.main}>
+              <BurgerIngredients />
+              <div className={styles.twoBlocks}>
+                <BurgerConstructor />
+                {buns.length > 0 ?
+                  <PriceCount onClick={handleOrderOpenModal} />
+                  : null}
+              </div>
+            </main>
+          </Route>
+        </DndProvider>
+      </Switch>
 
       {openIngredientsModal && (
         <Modal onClose={closeIngredientsModal} title='Детали ингредиента'>
@@ -98,8 +100,6 @@ export function App() {
           <OrderDetails />
         </Modal>
       )}
-    </Switch>
+    </>
   )
 }
-
-1

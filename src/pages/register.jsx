@@ -1,27 +1,49 @@
+import React, { useState } from 'react';
 import styles from './pages.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
+import { createNewAccount } from '../services/actions/register';
+import { useDispatch } from 'react-redux';
+
 
 export function Registration() {
+
+    const dispatch = useDispatch();
+    const [registerValue, setRegisterValue] = useState({ username: '', email: '', password: '' });
+
+
+    const onChangeValue = (event) => {
+        setRegisterValue({
+            ...registerValue,
+            [event.target.name]: event.target.value,
+        })
+    }
+
+    const registrationData = ((event) => {
+        event.preventDefault();
+        dispatch(createNewAccount(username, email, password))
+    })
+
     return (
-        <div className={styles.main}>
+        <div className={styles.main} onSubmit={registrationData} >
             <h1 className="text text_type_main-medium mb-6">Регистрация</h1>
             <Input
-                //onChange={onChange}
-                //value={value}
                 type={'text'}
                 placeholder={'Имя'}
+                onChange={onChangeValue}
+                value={registerValue.username}
+                name={'name'}
                 extraClass="mb-6"
             />
             <EmailInput
-                //onChange={onChange}
-                //value={value}
+                onChange={onChangeValue}
+                value={registerValue.email}
                 name={'email'}
                 extraClass="mb-6"
             />
             <PasswordInput
-                //onChange={onChange}
-                //value={value}
+                onChange={onChangeValue}
+                value={registerValue.password}
                 name={'password'}
                 extraClass="mb-6"
             />

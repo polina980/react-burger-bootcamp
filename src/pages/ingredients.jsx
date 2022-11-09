@@ -1,4 +1,10 @@
+// import styles from './ingredients.module.css';
+// import { useSelector } from 'react-redux';
+
 // export function IngredientPage() {
+
+//   const ingredient = useSelector(state => state.ingredientDetails.ingredientDetails)
+
 //     return (
 //         <div className={styles.details}>
 //       <img src={ingredient.image_large} alt={ingredient.name} />

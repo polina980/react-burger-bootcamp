@@ -4,7 +4,7 @@ export const PASSWORD_RESET_REQUEST = 'PASSWORD_RESET_REQUEST';
 export const PASSWORD_RESET_SUCCESS = 'PASSWORD_RESET_SUCCESS';
 export const PASSWORD_RESET_ERROR = 'PASSWORD_RESET_ERROR';
 
-export const passwordResetSuccess = () => ({
+export const passwordResetSuccess = (password, accessToken) => ({
   type: PASSWORD_RESET_SUCCESS,
   password,
   accessToken
