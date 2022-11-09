@@ -25,7 +25,7 @@ export const registrationReducer = (state = registrationState, action) => {
             return {
                 ...state,
                 registrationError: false,
-                name: action.username,
+                name: action.name,
                 email: action.email,
                 password: action.password
             }

@@ -61,12 +61,12 @@ class Api {
     return this._request(this._makeUrl(this._orderEndpoint), options)
   }
 
-  registerRequest(username, email, password) {
+  registerRequest(name, email, password) {
     const options = {
       method: 'POST',
       headers: this._defaultHeaders,
       body: JSON.stringify({
-        name: username,
+        name: name,
         email: email,
         password: password
       })

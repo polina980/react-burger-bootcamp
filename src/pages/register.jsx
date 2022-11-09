@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 export function Registration() {
 
     const dispatch = useDispatch();
-    const [registerValue, setRegisterValue] = useState({ username: '', email: '', password: '' });
+    const [registerValue, setRegisterValue] = useState({ name: '', email: '', password: '' });
 
 
     const onChangeValue = (event) => {
@@ -21,17 +21,17 @@ export function Registration() {
 
     const registrationData = ((event) => {
         event.preventDefault();
-        dispatch(createNewAccount(username, email, password))
+        dispatch(createNewAccount(registerValue.name, registerValue.email, registerValue.password))
     })
 
     return (
-        <div className={styles.main} onSubmit={registrationData} >
+        <form className={styles.main} onSubmit={(event) => registrationData(event)} >
             <h1 className="text text_type_main-medium mb-6">Регистрация</h1>
             <Input
                 type={'text'}
                 placeholder={'Имя'}
                 onChange={onChangeValue}
-                value={registerValue.username}
+                value={registerValue.name}
                 name={'name'}
                 extraClass="mb-6"
             />
@@ -54,6 +54,6 @@ export function Registration() {
                 <h2 className="text text_type_main-default text_color_inactive">Уже зарегистрированы?</h2>
                 <Link to='/login' className={`${styles.link} text text_type_main-default`}>Войти</Link>
             </div>
-        </div>
+        </form>
     )
 }

@@ -15,7 +15,6 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { clearConstructor } from '../../services/actions/ingredients-constructor';
 import { Switch, Route } from 'react-router-dom';
-
 import { LoginPage, Registration, ForgotRassword, ResetRassword, ProfilePage, IngredientPage } from '../../pages/index';
 
 export function App() {
