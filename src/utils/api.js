@@ -74,6 +74,28 @@ class Api {
     return this._request(this._makeUrl(this._registerEndroint), options)
   }
 
+  passwordForgotRequest(email) {
+    const options = {
+      method: 'POST',
+      headers: this._defaultHeaders,
+      body: JSON.stringify({
+        email: email
+      })
+    }
+    return this._request(this._makeUrl(this._passwordForgotEndpoint), options)
+  }
+
+  passwordResetRequest(password, token) {
+    const options = {
+      method: 'POST',
+      headers: this._defaultHeaders,
+      body: JSON.stringify({
+        password: password,
+        token: token
+      })
+    }
+    return this._request(this._makeUrl(this._passwordResetEndpoint), options)
+  }
 }
 
 export const apiBurger = new Api(apiConfig);

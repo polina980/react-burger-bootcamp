@@ -15,7 +15,8 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { clearConstructor } from '../../services/actions/ingredients-constructor';
 import { Switch, Route } from 'react-router-dom';
-import { LoginPage, Registration, ForgotRassword, ResetRassword, ProfilePage, IngredientPage } from '../../pages/index';
+//import { ProtectedRoute } from '../protected-route';
+import { LoginPage, Registration, ForgotPassword, ResetPassword, ProfilePage, IngredientPage } from '../../pages/index';
 
 export function App() {
 
@@ -50,29 +51,29 @@ export function App() {
         <DndProvider backend={HTML5Backend}>
           <AppHeader />
 
-          <Route path="/login">
+          <Route path="/login" exact={true}>
             <LoginPage />
           </Route>
 
-          <Route path="/register">
+          <Route path="/register" exact={true}>
             <Registration />
           </Route>
 
-          <Route path="/forgot-password">
-            <ForgotRassword />
+          <Route path="/forgot-password" exact={true}>
+            <ForgotPassword />
           </Route>
 
-          <Route path="/reset-password">
-            <ResetRassword />
+          <Route path="/reset-password" exact={true}>
+            <ResetPassword />
           </Route>
 
-          <Route path="/profile"> {/*ProtectedRoute*/}
+          <Route path="/profile" exact={true}> {/*ProtectedRoute?*/}
             <ProfilePage />
           </Route>
 
-          <Route path="/ingredients/:id">
+          {/* <Route path="/ingredients/:id" exact={true}>
             <IngredientPage />
-          </Route>
+          </Route> */}
 
           <Route path="/" exact={true}>
             <main className={styles.main}>

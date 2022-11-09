@@ -7,6 +7,15 @@ export const PASSWORD_FORGOT_ERROR = 'PASSWORD_FORGOT_ERROR';
 export const passwordForgotSuccess = (email) => ({
   type: PASSWORD_FORGOT_SUCCESS,
   email
-  // success: true,
-  // message: 'Reset email sent'
 })
+
+export function createNewPassword(email) {
+  return (dispatch) =>
+    apiBurger.passwordForgotRequest(email)
+      .then((email) => {
+        dispatch(passwordForgotSuccess(email));
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+}

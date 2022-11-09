@@ -25,7 +25,7 @@ export const passwordResetReducer = (state = passwordResetState, action) => {
                 passwordResetRequest: true,
                 passwordResetError: false,
                 password: action.password,
-                token: action.accessToken
+                token: action.token
             }
         }
         case PASSWORD_RESET_ERROR: {

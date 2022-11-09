@@ -23,7 +23,7 @@ export const passwordForgotReducer = (state = passwordForgotState, action) => {
         ...state,
         passwordForgotRequest: true,
         passwordForgotError: false,
-        email: action.email,
+        email: action.email
       }
     }
     case PASSWORD_FORGOT_ERROR: {

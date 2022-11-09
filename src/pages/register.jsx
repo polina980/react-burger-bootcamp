@@ -5,12 +5,10 @@ import { Link } from 'react-router-dom';
 import { createNewAccount } from '../services/actions/register';
 import { useDispatch } from 'react-redux';
 
-
 export function Registration() {
 
     const dispatch = useDispatch();
     const [registerValue, setRegisterValue] = useState({ name: '', email: '', password: '' });
-
 
     const onChangeValue = (event) => {
         setRegisterValue({
@@ -23,6 +21,11 @@ export function Registration() {
         event.preventDefault();
         dispatch(createNewAccount(registerValue.name, registerValue.email, registerValue.password))
     })
+
+    // const handleClear = (event) => {
+    //     event.preventDefault()
+    //     setRegisterValue({ name: '', email: '', password: '' })
+    // }
 
     return (
         <form className={styles.main} onSubmit={(event) => registrationData(event)} >
@@ -47,7 +50,7 @@ export function Registration() {
                 name={'password'}
                 extraClass="mb-6"
             />
-            <Button type="primary" size="medium">
+            <Button type="primary" size="medium" /*onClick={handleClear}*/>
                 Зарегистрироваться
             </Button>
             <div className={`${styles.line} mt-20`}>
