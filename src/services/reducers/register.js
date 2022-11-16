@@ -4,15 +4,13 @@ import {
     REGISTRATION_ERROR
 } from '../actions/register';
 
-export const registrationState = {
-    name: '',
-    email: '',
-    password: '',
+export const initialState = {
+    user: {},
     registrationRequest: false,
     registrationError: false
 }
 
-export const registrationReducer = (state = registrationState, action) => {
+export const registrationReducer = (state = initialState, action) => {
     switch (action.type) {
         case REGISTRATION_REQUEST: {
             return {
@@ -24,10 +22,10 @@ export const registrationReducer = (state = registrationState, action) => {
         case REGISTRATION_SUCCESS: {
             return {
                 ...state,
+                registrationRequest: true,
                 registrationError: false,
-                name: action.name,
-                email: action.email,
-                password: action.password
+                user: action.payload.user,
+                success: action.payload.success
             }
         }
         case REGISTRATION_ERROR: {

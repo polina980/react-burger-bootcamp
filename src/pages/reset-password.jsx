@@ -1,45 +1,54 @@
 import React, { useState } from 'react';
 import styles from './pages.module.css';
 import { PasswordInput, Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { confirmNewPassword } from '../services/actions/password-reset'
 
 export function ResetPassword() {
 
-    const dispatch = useDispatch();
-    const [resetValue, setResetValue] = useState({ password: '', token: '' });
+    const authorization = useSelector(state => state.passwordReset.success);
 
-    const onChangeValue = (event) => {
-        setResetValue({
-            ...resetValue,
-            [event.target.name]: event.target.value,
-        })
-    }
+    const dispatch = useDispatch();
+    const [value, setValue] = useState({ password: '', token: '' });
+
+    // const onChangeValue = (event) => {
+    //     setValue({
+    //         ...value,
+    //         [event.target.name]: event.target.value,
+    //     })
+    // }
 
     const resetData = ((event) => {
         event.preventDefault();
-        dispatch(confirmNewPassword(resetValue.password, resetValue.token))
+        dispatch(confirmNewPassword(value.password, value.token))
     })
+
+    if (authorization) {
+        return (<Redirect to={'/login'} />)
+    }
 
     return (
         <form className={styles.main} onSubmit={(event) => resetData(event)}>
             <h1 className="text text_type_main-medium mb-6">Восстановление пароля</h1>
             <PasswordInput
-                onChange={onChangeValue}
-                value={resetValue.password}
+                onChange={event => setValue({ ...value, password: event.target.value })}
+                value={value.password}
                 name={'password'}
                 placeholder={'Введите новый пароль'}
                 extraClass="mb-6"
             />
             <Input
-                onChange={onChangeValue}
-                value={resetValue.token}
+                onChange={event => setValue({ ...value, token: event.target.value })}
+                value={value.token}
                 type={'text'}
                 placeholder={'Введите код из письма'}
                 extraClass="mb-6"
             />
-            <Button type="primary" size="medium">
+            <Button
+                type="primary"
+                htmlType="submit"
+                size="medium">
                 Сохранить
             </Button>
             <div className={`${styles.line} mt-20`}>

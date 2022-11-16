@@ -4,14 +4,14 @@ import {
     PASSWORD_RESET_ERROR
 } from '../actions/password-reset';
 
-export const passwordResetState = {
+export const initialState = {
     password: '',
     token: '',
     passwordResetRequest: false,
     passwordResetError: false
 }
 
-export const passwordResetReducer = (state = passwordResetState, action) => {
+export const passwordResetReducer = (state = initialState, action) => {
     switch (action.type) {
         case PASSWORD_RESET_REQUEST: {
             return {
@@ -24,8 +24,9 @@ export const passwordResetReducer = (state = passwordResetState, action) => {
                 ...state,
                 passwordResetRequest: true,
                 passwordResetError: false,
-                password: action.password,
-                token: action.token
+                password: action.payload.password,
+                token: action.payload.token,
+                success: action.payload.success
             }
         }
         case PASSWORD_RESET_ERROR: {

@@ -4,7 +4,7 @@ import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-dev
 import { Link } from 'react-router-dom';
 
 function AppHeaderFunction() {
-  
+
   return (
     <header className={styles.header}>
       <nav className={styles.headerNavigation}>

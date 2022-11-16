@@ -1,11 +1,14 @@
+import { getCookie } from "./cookie";
+
 export const apiConfig = {
   baseUrl: `https://norma.nomoreparties.space/api`,
   ingredients: '/ingredients',
   order: '/orders',
-  autorisation: '/auth/login',
+  authorization: '/auth/login',
   register: '/auth/register',
   logout: '/auth/logout',
   token: '/auth/token',
+  user: '/auth/user',
   passwordForgot: '/password-reset',
   passwordReset: '/password-reset/reset',
   defaultHeaders: {
@@ -14,14 +17,15 @@ export const apiConfig = {
 }
 
 class Api {
-  constructor({ baseUrl, ingredients, order, autorisation, register, logout, token, passwordForgot, passwordReset, defaultHeaders }) {
+  constructor({ baseUrl, ingredients, order, authorization, register, logout, token, user, passwordForgot, passwordReset, defaultHeaders }) {
     this._baseUrl = baseUrl;
     this._ingredientsEndpoint = ingredients;
     this._orderEndpoint = order;
-    this._autorisationEndpoint = autorisation;
+    this._authorizationEndpoint = authorization;
     this._registerEndroint = register;
     this._logoutEndpoint = logout;
     this._tokenEndpoint = token;
+    this._userEndpoint = user;
     this._passwordForgotEndpoint = passwordForgot;
     this._passwordResetEndpoint = passwordReset;
     this._defaultHeaders = defaultHeaders;
@@ -95,6 +99,67 @@ class Api {
       })
     }
     return this._request(this._makeUrl(this._passwordResetEndpoint), options)
+  }
+
+  getLogin(email, password) {
+    const options = {
+      method: 'POST',
+      headers: this._defaultHeaders,
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    }
+    return this._request(this._makeUrl(this._authorizationEndpoint), options)
+  }
+
+  logoutRequest() {
+    const options = {
+      method: 'POST',
+      headers: this._defaultHeaders,
+      body: JSON.stringify({
+        token: getCookie('refresh'),
+      })
+    }
+    return this._request(this._makeUrl(this._logoutEndpoint), options)
+  }
+
+  refreshToken() {
+    const options = {
+      method: 'POST',
+      headers: this._defaultHeaders,
+      body: JSON.stringify({
+        token: getCookie('refresh'),
+      })
+    }
+    return this._request(this._makeUrl(this._tokenEndpoint), options)
+  }
+
+  getUserData() {
+    const options = {
+      method: 'GET',
+      headers: {
+        authorization: 'Bearer ' + getCookie('access'),
+        'Content-Type': 'application/json'
+      },
+    }
+    return this._request(this._makeUrl(this._userEndpoint), options)
+  }
+
+  patchUserData(name, email, password) {
+    const options = {
+      method: 'PATCH',
+      headers: {
+        authorization: 'Bearer ' + getCookie('access'),
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        password: password
+      })
+    }
+    return this._request(this._makeUrl(this._userEndpoint), options)
   }
 }
 

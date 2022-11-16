@@ -10,4 +10,15 @@
     display: flex;
     align-items: center;
     height: 64px;
+    text-decoration: none;
+}
+
+.active {
+    color: #F2F2F3;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
 }

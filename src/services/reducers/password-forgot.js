@@ -4,13 +4,13 @@ import {
   PASSWORD_FORGOT_ERROR
 } from '../actions/password-forgot';
 
-export const passwordForgotState = {
+export const initialState = {
   email: '',
   passwordForgotRequest: false,
   passwordForgotError: false
 }
 
-export const passwordForgotReducer = (state = passwordForgotState, action) => {
+export const passwordForgotReducer = (state = initialState, action) => {
   switch (action.type) {
     case PASSWORD_FORGOT_REQUEST: {
       return {
@@ -23,7 +23,8 @@ export const passwordForgotReducer = (state = passwordForgotState, action) => {
         ...state,
         passwordForgotRequest: true,
         passwordForgotError: false,
-        email: action.email
+        email: action.payload.email,
+        success: action.payload.success
       }
     }
     case PASSWORD_FORGOT_ERROR: {

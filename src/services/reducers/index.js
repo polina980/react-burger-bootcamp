@@ -5,6 +5,8 @@ import { orderDetailsReducer } from './order-details';
 import { passwordForgotReducer } from './password-forgot';
 import { passwordResetReducer } from './password-reset';
 import { registrationReducer } from './register';
+import { getLoginReducer } from './login';
+import { getUserInfoReducer } from './user';
 import { combineReducers } from "redux";
 
 export const rootReducer = combineReducers({
@@ -15,4 +17,6 @@ export const rootReducer = combineReducers({
   passwordForgot: passwordForgotReducer,
   passwordReset: passwordResetReducer,
   registration: registrationReducer,
+  getLogin: getLoginReducer,
+  userInfo: getUserInfoReducer,
 })

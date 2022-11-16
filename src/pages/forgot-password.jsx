@@ -1,38 +1,34 @@
 import React, { useState } from 'react';
 import styles from './pages.module.css';
 import { EmailInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link, Redirect, useLocation } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { createNewPassword } from '../services/actions/password-forgot';
 import { useDispatch, useSelector } from 'react-redux';
 
 export function ForgotPassword() {
 
     const dispatch = useDispatch();
-    const [emailValue, setEmailValue] = useState({ email: '' });
-    const forgotSuccess = useSelector(state => state.passwordForgot.email);
-    const location = useLocation()
+    const [value, setValue] = useState({ email: '' });
+
+    const history = useHistory();
+    const authorization = useSelector(state => state.passwordForgot.success);
+    // const authorization = JSON.parse(localStorage.getItem('authorization'));
 
     const onChangeValue = (event) => {
-        setEmailValue({
-            ...emailValue,
+        setValue({
+            ...value,
             [event.target.name]: event.target.value,
         })
     }
 
     const emailData = ((event) => {
         event.preventDefault();
-        dispatch(createNewPassword(emailValue.email))
+        dispatch(createNewPassword(value.email));
+        // success ? history.push('/reset-password') : history.push('/register')
     })
 
-    // const handleClear = (event) => {
-    //     event.preventDefault()
-    //     setEmailValue({ email: '' })
-    // }
-
-    if (forgotSuccess) {
-        return (
-            <Redirect to={{ pathname: '/reset-password', state: { from: location } }} exact={true}/>
-        )
+    if (authorization) {
+        return (<Redirect to={'/reset-password'} />)
     }
 
     return (
@@ -40,13 +36,15 @@ export function ForgotPassword() {
             <h1 className="text text_type_main-medium mb-6">Восстановление пароля</h1>
             <EmailInput
                 onChange={onChangeValue}
-                value={emailValue.email}
+                value={value.email}
                 name={'email'}
                 placeholder={'Укажите e-mail'}
-                // required = {true}
                 extraClass="mb-6"
             />
-            <Button type="primary" size="medium" /*onClick={handleClear}*/>
+            <Button 
+            type="primary" 
+            htmlType="submit"
+            size="medium">
                 Восстановить
             </Button>
             <div className={`${styles.line} mt-20`}>

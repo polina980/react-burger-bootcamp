@@ -1,31 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './pages.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { createNewAccount } from '../services/actions/register';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export function Registration() {
 
+    const authorization = useSelector(state => state.registration.success);
+
     const dispatch = useDispatch();
-    const [registerValue, setRegisterValue] = useState({ name: '', email: '', password: '' });
+    const [value, setValue] = useState({ name: '', email: '', password: '' });
 
     const onChangeValue = (event) => {
-        setRegisterValue({
-            ...registerValue,
+        setValue({
+            ...value,
             [event.target.name]: event.target.value,
         })
     }
 
     const registrationData = ((event) => {
         event.preventDefault();
-        dispatch(createNewAccount(registerValue.name, registerValue.email, registerValue.password))
+        dispatch(createNewAccount(value.name, value.email, value.password))
     })
 
-    // const handleClear = (event) => {
-    //     event.preventDefault()
-    //     setRegisterValue({ name: '', email: '', password: '' })
-    // }
+    if (authorization) {
+        return (<Redirect to={'/login'} />)
+    }
 
     return (
         <form className={styles.main} onSubmit={(event) => registrationData(event)} >
@@ -34,23 +35,26 @@ export function Registration() {
                 type={'text'}
                 placeholder={'Имя'}
                 onChange={onChangeValue}
-                value={registerValue.name}
+                value={value.name}
                 name={'name'}
                 extraClass="mb-6"
             />
             <EmailInput
                 onChange={onChangeValue}
-                value={registerValue.email}
+                value={value.email}
                 name={'email'}
                 extraClass="mb-6"
             />
             <PasswordInput
                 onChange={onChangeValue}
-                value={registerValue.password}
+                value={value.password}
                 name={'password'}
                 extraClass="mb-6"
             />
-            <Button type="primary" size="medium" /*onClick={handleClear}*/>
+            <Button
+                type="primary"
+                htmlType="submit"
+                size="medium">
                 Зарегистрироваться
             </Button>
             <div className={`${styles.line} mt-20`}>

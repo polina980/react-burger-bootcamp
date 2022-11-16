@@ -20,7 +20,13 @@ export function PriceCount({ onClick }) {
                 <p className="text text_type_digits-medium">{total}</p>
                 <img src={CurrencyIconBig} alt='Значок валюты' />
             </div>
-            <Button type="primary" size="large" htmlType='button' onClick={onClick}>Оформить заказ</Button>
+            <Button
+                type="primary"
+                htmlType="submit"
+                size="large"
+                onClick={onClick}>
+                Оформить заказ
+            </Button>
         </div>
     )
 }

@@ -14,9 +14,9 @@ import { getOrderNumber } from '../../services/actions/order-details';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
 import { clearConstructor } from '../../services/actions/ingredients-constructor';
-import { Switch, Route } from 'react-router-dom';
-//import { ProtectedRoute } from '../protected-route';
-import { LoginPage, Registration, ForgotPassword, ResetPassword, ProfilePage, IngredientPage } from '../../pages/index';
+import { Switch, Route, useHistory } from 'react-router-dom';
+import { ProtectedRoute } from '../protected-route';
+import { LoginPage, Registration, ForgotPassword, ResetPassword, ProfilePage, OrdersHistory, IngredientPage } from '../../pages/index';
 
 export function App() {
 
@@ -26,14 +26,20 @@ export function App() {
   const ingredients = useSelector(state => state.ingredientsList.ingredientsList);
   const idList = (ingredients.map(element => element._id));
   const dispatch = useDispatch();
+  const history = useHistory();
+  const authorization = useSelector(state => state.getLogin.success);
 
   useEffect(() => {
     dispatch(getIngredientsList())
   }, [dispatch])
 
   const handleOrderOpenModal = (() => {
-    setOrderOpenModal(true)
-    dispatch(getOrderNumber(idList))
+    if (!authorization) {
+      history.replace({ pathname: `/login` });
+    } else {
+      setOrderOpenModal(true)
+      dispatch(getOrderNumber(idList))
+    }
   })
 
   const closeIngredientsModal = useCallback(() => {
@@ -67,8 +73,12 @@ export function App() {
             <ResetPassword />
           </Route>
 
-          <Route path="/profile" exact={true}> {/*ProtectedRoute?*/}
+          <ProtectedRoute path="/profile" exact={true}>
             <ProfilePage />
+          </ProtectedRoute>
+
+          <Route path="/profile/orders" exact={true}>
+            <OrdersHistory />
           </Route>
 
           {/* <Route path="/ingredients/:id" exact={true}>

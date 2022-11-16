@@ -7,12 +7,12 @@ import {
 }
   from '../actions/ingredients-constructor';
 
-export const ingredientsConstructorState = {
+export const initialState = {
   constructorList: [],
   buns: []
 }
 
-export const constructorListReducer = (state = ingredientsConstructorState, action) => {
+export const constructorListReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_BUN: {
       return {
@@ -62,7 +62,8 @@ export const constructorListReducer = (state = ingredientsConstructorState, acti
     case CLEAR_CONSTRUCTOR: {
       return {
         ...state,
-        constructorList: []
+        constructorList: [],
+        buns: []
       }
     }
     default: {

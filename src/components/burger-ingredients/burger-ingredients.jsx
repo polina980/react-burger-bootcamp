@@ -13,7 +13,6 @@ function BurgerIngredientsFunction() {
   const [current, setCurrent] = useState('bun');
 
   const scrollToRef = (ref) => {
-
     if (ref === 'bun') {
       bunRef.current.scrollIntoView({ behavior: "smooth" })
     }
