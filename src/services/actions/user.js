@@ -16,10 +16,8 @@ const userSuccess = (payload) => ({
 export function getUserInfo() {
     return (dispatch) =>
         apiBurger.getUserData()
-            .then((success) => {
-                if (success) {
-                    dispatch(userSuccess(success));
-                }
+            .then((data) => {
+                dispatch(userSuccess(data));
             })
             .catch((error) => {
                 console.log(error)
@@ -29,8 +27,8 @@ export function getUserInfo() {
 export function patchUserInfo(name, email, password) {
     return (dispatch) =>
         apiBurger.patchUserData(name, email, password)
-            .then((payload) => {
-                dispatch(userSuccess(payload));
+            .then((data) => {
+                dispatch(userSuccess(data));
             })
             .catch((error) => {
                 console.log(error)

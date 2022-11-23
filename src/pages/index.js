@@ -1,9 +1,9 @@
-import { LoginPage } from './login';
+import { Main } from './main';
 import { Registration } from './register';
+import { LoginPage } from './login';
 import { ForgotPassword } from './forgot-password';
 import { ResetPassword } from './reset-password';
 import { ProfilePage } from './profile';
-import { OrdersHistory } from './orders-history';
 import { IngredientPage } from './ingredients';
 
-export { LoginPage, Registration, ForgotPassword, ResetPassword, ProfilePage, OrdersHistory, IngredientPage }
+export { Main, Registration, LoginPage, ForgotPassword, ResetPassword, ProfilePage, IngredientPage }

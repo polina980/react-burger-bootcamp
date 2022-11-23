@@ -16,7 +16,6 @@ export function getUserLogin(email, password) {
       .then((data) => {
         const { success, refreshToken, accessToken } = data
         if (success) {
-          localStorage.setItem('authorization', JSON.stringify(true));
           setCookie('access', accessToken.split('Bearer ')[1]);
           setCookie('refresh', refreshToken);
           dispatch(getLoginSuccess(data));

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './pages.module.css';
 import { EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Redirect } from 'react-router-dom';
@@ -8,14 +8,14 @@ import { getUserLogin } from '../services/actions/login'
 export function LoginPage() {
 
     const dispatch = useDispatch();
-    const authorization = useSelector(state => state.getLogin.success);
+    const authorization = useSelector(state => state.getLogin.login);
 
     const [value, setValue] = useState({
         email: '',
         password: ''
     })
-    const handleLogin = (evt) => {
-        evt.preventDefault();
+    const handleLogin = (event) => {
+        event.preventDefault();
         dispatch(getUserLogin(value.email, value.password));
     }
 
@@ -24,17 +24,17 @@ export function LoginPage() {
     }
 
     return (
-        <form className={styles.main} onSubmit={handleLogin}>
+        <form className={styles.form} onSubmit={handleLogin}>
             <h1 className="text text_type_main-medium mb-6">Вход</h1>
             <EmailInput
-                onChange={(evt) => setValue({ ...value, email: evt.target.value })}
+                onChange={(event) => setValue({ ...value, email: event.target.value })}
                 value={value.email}
                 name={'email'}
                 isIcon={false}
                 extraClass="mb-6"
             />
             <PasswordInput
-                onChange={(evt) => setValue({ ...value, password: evt.target.value })}
+                onChange={(event) => setValue({ ...value, password: event.target.value })}
                 value={value.password}
                 name={'password'}
                 extraClass="mb-6"

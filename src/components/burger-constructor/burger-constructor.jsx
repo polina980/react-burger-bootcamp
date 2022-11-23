@@ -51,7 +51,7 @@ export function BurgerConstructor() {
                   thumbnail={element.image}
                 />
               </li>
-            );
+            )
         })}
         <li className={styles.smallScroll} ref={dropConstructor}>
           {elements.map((element, index) => {
@@ -63,7 +63,7 @@ export function BurgerConstructor() {
                   id={element.id}
                   key={element.id}
                   deleteElement={deleteElement} />
-              );
+              )
           }
           )}
         </li>
@@ -79,7 +79,7 @@ export function BurgerConstructor() {
                   thumbnail={element.image}
                 />
               </li>
-            );
+            )
         })}
       </ul>
     </section>

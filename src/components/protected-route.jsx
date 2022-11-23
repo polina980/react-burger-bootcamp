@@ -1,30 +1,22 @@
-import { Redirect, Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import { Route, Redirect } from 'react-router-dom';
+// import PropTypes from 'prop-types';
+// import { useSelector } from 'react-redux';
 
-export function ProtectedRoute({ children, ...rest }) {
+// export const ProtectedRoute = ({ component, path }) => {
 
-    const isAuthenticated = JSON.parse(localStorage.getItem('authorization'));
+//     const authorization = useSelector(state => state.getLogin.login);
 
-    // const isAuthenticated = !!localStorage.getItem('refreshToken');
+//     if (!authorization) {
 
-    return (
-        <Route
-            {...rest}
-            render={() =>
-                isAuthenticated ? (
-                    children
-                ) : (
-                    <Redirect
-                        to={{
-                            pathname: '/login'
-                        }}
-                    />
-                )
-            }
-        />
-    );
-}
+//         return (
+//             <Route>
+//                 <Redirect to={{ pathname: '/login' }} />
+//             </Route>
+//         )
+//     }
+//     return <Route path={path} component={component} />
+// }
 
-ProtectedRoute.propTypes = {
-    children: PropTypes.node.isRequired
-}
+// ProtectedRoute.propTypes = {
+//     children: PropTypes.node.isRequired
+// }

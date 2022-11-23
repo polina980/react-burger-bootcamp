@@ -37,8 +37,8 @@ function ModalFunction({ children, onClose, title }) {
 
 ModalFunction.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  title: PropTypes.string
 }
 
 export const Modal = React.memo(ModalFunction);

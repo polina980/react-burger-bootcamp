@@ -12,24 +12,19 @@ export function ResetPassword() {
     const dispatch = useDispatch();
     const [value, setValue] = useState({ password: '', token: '' });
 
-    // const onChangeValue = (event) => {
-    //     setValue({
-    //         ...value,
-    //         [event.target.name]: event.target.value,
-    //     })
-    // }
-
     const resetData = ((event) => {
         event.preventDefault();
         dispatch(confirmNewPassword(value.password, value.token))
     })
 
     if (authorization) {
-        return (<Redirect to={'/login'} />)
+        return (
+            <Redirect to={'/login'} />
+        )
     }
 
     return (
-        <form className={styles.main} onSubmit={(event) => resetData(event)}>
+        <form className={styles.form} onSubmit={(event) => resetData(event)}>
             <h1 className="text text_type_main-medium mb-6">Восстановление пароля</h1>
             <PasswordInput
                 onChange={event => setValue({ ...value, password: event.target.value })}

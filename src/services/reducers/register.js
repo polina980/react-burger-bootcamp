@@ -6,6 +6,7 @@ import {
 
 export const initialState = {
     user: {},
+    success: false,
     registrationRequest: false,
     registrationError: false
 }

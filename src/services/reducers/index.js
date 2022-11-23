@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 import { ingredientDetailsReducer } from './ingredient-details';
 import { constructorListReducer } from './ingredients-constructor';
 import { ingredientsListReducer } from './ingredients-list';
@@ -7,7 +8,6 @@ import { passwordResetReducer } from './password-reset';
 import { registrationReducer } from './register';
 import { getLoginReducer } from './login';
 import { getUserInfoReducer } from './user';
-import { combineReducers } from "redux";
 
 export const rootReducer = combineReducers({
   ingredientDetails: ingredientDetailsReducer,

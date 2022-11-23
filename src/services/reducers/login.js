@@ -1,39 +1,23 @@
-import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR
-} from '../actions/login';
+import { LOGIN_SUCCESS } from '../actions/login';
+import { LOGOUT_SUCCESS } from '../actions/logout';
+import { getCookie } from '../../utils/cookie';
 
 export const initialState = {
-  email: '',
-  password: '',
-  getLoginRequest: false,
-  getLoginError: false
+  login: getCookie('access') ? true : false
 }
 
 export const getLoginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_REQUEST: {
-      return {
-        ...state,
-        getLoginRequest: true,
-      }
-    }
     case LOGIN_SUCCESS: {
       return {
         ...state,
-        getLoginRequest: true,
-        getLoginError: false,
-        email: action.payload.email,
-        password: action.payload.password,
-        success: action.payload.success
+        login: true
       }
     }
-    case LOGIN_ERROR: {
+    case LOGOUT_SUCCESS: {
       return {
         ...state,
-        getLoginRequest: false,
-        getLoginError: true
+        login: false
       }
     }
     default: {

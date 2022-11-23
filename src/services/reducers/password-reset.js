@@ -7,6 +7,7 @@ import {
 export const initialState = {
     password: '',
     token: '',
+    success: false,
     passwordResetRequest: false,
     passwordResetError: false
 }

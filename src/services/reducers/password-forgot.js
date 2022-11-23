@@ -6,6 +6,7 @@ import {
 
 export const initialState = {
   email: '',
+  success: false,
   passwordForgotRequest: false,
   passwordForgotError: false
 }

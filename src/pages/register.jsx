@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './pages.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Redirect } from 'react-router-dom';
@@ -12,13 +12,6 @@ export function Registration() {
     const dispatch = useDispatch();
     const [value, setValue] = useState({ name: '', email: '', password: '' });
 
-    const onChangeValue = (event) => {
-        setValue({
-            ...value,
-            [event.target.name]: event.target.value,
-        })
-    }
-
     const registrationData = ((event) => {
         event.preventDefault();
         dispatch(createNewAccount(value.name, value.email, value.password))
@@ -29,24 +22,24 @@ export function Registration() {
     }
 
     return (
-        <form className={styles.main} onSubmit={(event) => registrationData(event)} >
+        <form className={styles.form} onSubmit={(event) => registrationData(event)} >
             <h1 className="text text_type_main-medium mb-6">Регистрация</h1>
             <Input
+                onChange={(event) => setValue({ ...value, name: event.target.value })}
                 type={'text'}
                 placeholder={'Имя'}
-                onChange={onChangeValue}
                 value={value.name}
                 name={'name'}
                 extraClass="mb-6"
             />
             <EmailInput
-                onChange={onChangeValue}
+                onChange={(event) => setValue({ ...value, email: event.target.value })}
                 value={value.email}
                 name={'email'}
                 extraClass="mb-6"
             />
             <PasswordInput
-                onChange={onChangeValue}
+                onChange={(event) => setValue({ ...value, password: event.target.value })}
                 value={value.password}
                 name={'password'}
                 extraClass="mb-6"

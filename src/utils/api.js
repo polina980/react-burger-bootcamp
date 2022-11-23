@@ -4,8 +4,8 @@ export const apiConfig = {
   baseUrl: `https://norma.nomoreparties.space/api`,
   ingredients: '/ingredients',
   order: '/orders',
-  authorization: '/auth/login',
   register: '/auth/register',
+  authorization: '/auth/login',
   logout: '/auth/logout',
   token: '/auth/token',
   user: '/auth/user',
@@ -70,9 +70,9 @@ class Api {
       method: 'POST',
       headers: this._defaultHeaders,
       body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password
+        name,
+        email,
+        password
       })
     }
     return this._request(this._makeUrl(this._registerEndroint), options)
@@ -83,7 +83,7 @@ class Api {
       method: 'POST',
       headers: this._defaultHeaders,
       body: JSON.stringify({
-        email: email
+        email
       })
     }
     return this._request(this._makeUrl(this._passwordForgotEndpoint), options)
@@ -94,8 +94,8 @@ class Api {
       method: 'POST',
       headers: this._defaultHeaders,
       body: JSON.stringify({
-        password: password,
-        token: token
+        password,
+        token
       })
     }
     return this._request(this._makeUrl(this._passwordResetEndpoint), options)
@@ -106,8 +106,8 @@ class Api {
       method: 'POST',
       headers: this._defaultHeaders,
       body: JSON.stringify({
-        email: email,
-        password: password
+        email,
+        password
       })
     }
     return this._request(this._makeUrl(this._authorizationEndpoint), options)
@@ -118,7 +118,7 @@ class Api {
       method: 'POST',
       headers: this._defaultHeaders,
       body: JSON.stringify({
-        token: getCookie('refresh'),
+        token: getCookie('refresh')
       })
     }
     return this._request(this._makeUrl(this._logoutEndpoint), options)
@@ -154,9 +154,9 @@ class Api {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password
+        name,
+        email,
+        password
       })
     }
     return this._request(this._makeUrl(this._userEndpoint), options)

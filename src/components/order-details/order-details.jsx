@@ -1,6 +1,6 @@
+import styles from './order-details.module.css';
 import { useSelector } from 'react-redux';
 import done from '../../images/done.png';
-import styles from './order-details.module.css';
 
 export function OrderDetails() {
 
