@@ -1,22 +1,19 @@
-// import { Route, Redirect } from 'react-router-dom';
-// import PropTypes from 'prop-types';
-// import { useSelector } from 'react-redux';
+import { Route, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-// export const ProtectedRoute = ({ component, path }) => {
+export const ProtectedRoute = (props) => {
 
-//     const authorization = useSelector(state => state.getLogin.login);
+    const authorization = useSelector(state => state.getLogin.login);
 
-//     if (!authorization) {
+    if (!authorization) {
 
-//         return (
-//             <Route>
-//                 <Redirect to={{ pathname: '/login' }} />
-//             </Route>
-//         )
-//     }
-//     return <Route path={path} component={component} />
-// }
-
-// ProtectedRoute.propTypes = {
-//     children: PropTypes.node.isRequired
-// }
+        return (
+            <Route path={props.path} exact={props.exact}>
+                <Redirect
+                    to={'/login?retpath=/profile'}
+                />
+            </Route>
+        )
+    }
+    return <Route {...props} />
+}

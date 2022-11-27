@@ -22,7 +22,7 @@
   grid-template-columns: 320px 480px 320px;
   column-gap: 60px;
   justify-content: center;
-  margin-top: 8%;
+  margin-top: 180px;
 }
 
 /* Главная страница */
@@ -53,3 +53,17 @@
     margin: 0;
     padding: 0;
   } */
+
+/* Ошибка 404 */
+.container {
+  display: flex;
+  align-items: center;
+  margin: 180px auto;
+  flex-direction: column;
+}
+
+.linkNotFound {
+  text-decoration: underline;
+  color: #ffffff;
+  cursor: pointer;
+}

@@ -3,7 +3,7 @@ import styles from './pages.module.css';
 import { EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserLogin } from '../services/actions/login'
+import { getUserLogin } from '../services/actions/login';
 
 export function LoginPage() {
 
@@ -20,7 +20,8 @@ export function LoginPage() {
     }
 
     if (authorization) {
-        return (<Redirect to={'/'} />)
+        const searchParams = new URLSearchParams(window.location.search)
+        return (<Redirect to={searchParams.get('retpath') || '/'} />)
     }
 
     return (
