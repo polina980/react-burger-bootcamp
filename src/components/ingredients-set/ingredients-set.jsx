@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './ingredients-set.module.css';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { IngredientCard } from '../ingredient-card/ingredient-card';
 
@@ -25,8 +24,3 @@ export const IngredientsSet = React.forwardRef(({ type, title }, ref) => {
   )
 }
 )
-
-IngredientsSet.propTypes = {
-  type: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-}

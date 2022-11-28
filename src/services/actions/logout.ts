@@ -1,16 +1,15 @@
 import { apiBurger } from '../../utils/api';
 import { deleteCookie } from '../../utils/cookie';
+import { LOGOUT_SUCCESS } from '../constants/constants';
+import { ILogoutSuccess } from '../actions/interfaces';
+import { AppThunk } from '../types/types';
 
-export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
-export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-export const LOGOUT_ERROR = 'LOGOUT_ERROR';
-
-export const logoutSuccess = (payload) => ({
+export const logoutSuccess = (payload: boolean): ILogoutSuccess => ({
   type: LOGOUT_SUCCESS,
   payload
 })
 
-export function userLogout() {
+export const userLogout: AppThunk = () => {
   return (dispatch) =>
     apiBurger.logoutRequest()
       .then(({ success }) => {

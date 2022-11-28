@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import styles from './modal.module.css';
-import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { ModalOverlay } from '../modal-overlay/modal-overlay';
@@ -33,12 +32,6 @@ function ModalFunction({ children, onClose, title }) {
     </>,
     document.getElementById('modals')
   )
-}
-
-ModalFunction.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClose: PropTypes.func.isRequired,
-  title: PropTypes.string
 }
 
 export const Modal = React.memo(ModalFunction);

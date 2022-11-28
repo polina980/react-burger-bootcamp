@@ -1,12 +1,16 @@
-import { LOGIN_SUCCESS } from '../actions/login';
-import { LOGOUT_SUCCESS } from '../actions/logout';
+import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from '../constants/constants';
 import { getCookie } from '../../utils/cookie';
+import { TUnionAction } from '../actions/interfaces';
 
-export const initialState = {
+type TInitialState = {
+  login: boolean
+}
+
+const initialState: TInitialState = {
   login: getCookie('access') ? true : false
 }
 
-export const getLoginReducer = (state = initialState, action) => {
+export const getLoginReducer = (state = initialState, action: TUnionAction): TInitialState => {
   switch (action.type) {
     case LOGIN_SUCCESS: {
       return {

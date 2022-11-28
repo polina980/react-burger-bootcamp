@@ -1,18 +1,18 @@
-import {
-  SET_BUN,
-  ADD_INGREDIENT,
-  DELETE_INGREDIENT,
-  MOVE_INGREDIENT,
-  CLEAR_CONSTRUCTOR
-}
-  from '../actions/ingredients-constructor';
+import { SET_BUN, ADD_INGREDIENT, DELETE_INGREDIENT, MOVE_INGREDIENT, CLEAR_CONSTRUCTOR } from '../constants/constants';
+import { TUnionAction } from '../actions/interfaces';
+import { TIngredientType } from '../types/types';
 
-export const initialState = {
+type TInitialState = {
+  constructorList: Array<TIngredientType>,
+  buns: Array<TIngredientType>
+}
+
+const initialState: TInitialState = {
   constructorList: [],
   buns: []
 }
 
-export const constructorListReducer = (state = initialState, action) => {
+export const constructorListReducer = (state = initialState, action: TUnionAction): TInitialState => {
   switch (action.type) {
     case SET_BUN: {
       return {

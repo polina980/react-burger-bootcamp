@@ -1,16 +1,15 @@
 import { apiBurger } from '../../utils/api';
 import { setCookie } from '../../utils/cookie';
+import { LOGIN_SUCCESS } from '../constants/constants';
+import { IGetLoginSuccess } from '../actions/interfaces';
+import { AppThunk } from '../types/types';
 
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-
-export const getLoginSuccess = (payload) => ({
+export const getLoginSuccess = (payload: boolean): IGetLoginSuccess => ({
   type: LOGIN_SUCCESS,
   payload
 })
 
-export function getUserLogin(email, password) {
+export const getUserLogin: AppThunk = (email: string, password: string) => {
   return (dispatch) =>
     apiBurger.getLogin(email, password)
       .then((data) => {

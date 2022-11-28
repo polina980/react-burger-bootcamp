@@ -1,11 +1,9 @@
 import styles from './burger-element.module.css';
-import PropTypes from 'prop-types';
 import { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { DragIcon, ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useDispatch } from "react-redux";
 import { moveIngredient } from "../../services/actions/ingredients-constructor";
-import { ingredientType } from '../../utils/prop-types';
 
 export function BurgerElement({ element, deleteElement, id, index }) {
 
@@ -77,11 +75,4 @@ export function BurgerElement({ element, deleteElement, id, index }) {
       thumbnail={element.image}
     />
   </div>)
-}
-
-BurgerElement.propTypes = {
-  deleteElement: PropTypes.func.isRequired,
-  element: ingredientType.isRequired,
-  id: PropTypes.string,
-  index: PropTypes.number.isRequired,
 }

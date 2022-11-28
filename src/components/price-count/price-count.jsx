@@ -1,6 +1,5 @@
 import styles from './price-count.module.css';
 import CurrencyIconBig from '../../images/currency-icon-big.png';
-import PropTypes from 'prop-types';
 import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
@@ -29,8 +28,4 @@ export function PriceCount({ onClick }) {
             </Button>
         </div>
     )
-}
-
-PriceCount.propTypes = {
-    onClick: PropTypes.func.isRequired
 }
