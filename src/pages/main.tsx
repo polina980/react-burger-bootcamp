@@ -1,40 +1,35 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import styles from './pages.module.css';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getOrderNumber } from '../services/actions/order-details';
+import { useSelector } from '../services/hooks/hooks';
 import { BurgerIngredients } from '../components/burger-ingredients/burger-ingredients';
 import { BurgerConstructor } from '../components/burger-constructor/burger-constructor';
 import { PriceCount } from '../components/price-count/price-count';
+import { useHistory } from 'react-router-dom';
+import { getOrderNumber } from '../services/actions/order-details';
+import { useDispatch } from '../services/hooks/hooks';
 import { Modal } from '../components/modal/modal';
-import { IngredientDetails } from '../components/ingredient-details/ingredient-details';
 import { OrderDetails } from '../components/order-details/order-details';
-import { deleteIgredientDetails } from '../services/actions/ingredient-details';
 import { clearConstructor } from '../services/actions/ingredients-constructor';
 
-export function Main() {
+export const Main = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
   const authorization = useSelector(state => state.getLogin.login);
-  const [openOrderModal, setOrderOpenModal] = useState();
-  const openIngredientsModal = useSelector(state => !!state.ingredientDetails.ingredientDetails);
   const ingredients = useSelector(state => state.ingredientsList.ingredientsList);
   const buns = useSelector(state => state.constructorList.buns);
   const idList = (ingredients.map(element => element._id));
 
-  const handleOrderOpenModal = (() => {
+  const [openOrderModal, setOrderOpenModal] = useState(false);
+
+  const handleOrderOpenModal = useCallback(() => {
     if (!authorization) {
       history.replace({ pathname: `/login` });
     } else {
       setOrderOpenModal(true)
       dispatch(getOrderNumber(idList))
     }
-  })
-
-  const closeIngredientsModal = useCallback(() => {
-    dispatch(deleteIgredientDetails())
-  }, [dispatch])
+  }, [])
 
   const closeOrderModal = useCallback(() => {
     setOrderOpenModal(false)
@@ -53,17 +48,11 @@ export function Main() {
         </div>
       </main>
 
-      {openIngredientsModal && (
-        <Modal onClose={closeIngredientsModal} title='Детали ингредиента'>
-          <IngredientDetails />
-        </Modal>
-      )}
-
-      {!!openOrderModal && (
+      {openOrderModal &&
         <Modal onClose={closeOrderModal}>
           <OrderDetails />
         </Modal>
-      )}
+      }
     </>
   )
 }

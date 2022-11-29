@@ -3,7 +3,7 @@ import styles from './app-header.module.css';
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { NavLink, useLocation } from 'react-router-dom';
 
-function AppHeaderFunction() {
+const AppHeaderFunction = () => {
 
   const { pathname } = useLocation();
 
@@ -39,18 +39,18 @@ function AppHeaderFunction() {
 
         <Logo />
 
-          <NavLink
-            to='/profile'
-            exact={true}
-            className={styles.link}>
-            <ProfileIcon type={pathname === '/profile' ? "primary" : "secondary"} />
-            <p className={pathname === '/profile'
-              ? `${styles.active} text text_type_main-default`
-              : `text text_type_main-default text_color_inactive`}
-            >
-              Личный кабинет
-            </p>
-          </NavLink>
+        <NavLink
+          to='/profile'
+          exact={true}
+          className={styles.link}>
+          <ProfileIcon type={pathname === '/profile' ? "primary" : "secondary"} />
+          <p className={pathname === '/profile'
+            ? `${styles.active} text text_type_main-default`
+            : `text text_type_main-default text_color_inactive`}
+          >
+            Личный кабинет
+          </p>
+        </NavLink>
       </nav>
     </header>
   )

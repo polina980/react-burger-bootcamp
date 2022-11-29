@@ -1,28 +1,24 @@
 import styles from './burger-constructor.module.css';
 import { useDrop } from 'react-dnd';
 import { nanoid } from 'nanoid';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../../services/hooks/hooks';
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
-import { setBun, addIngredient, deleteIngredient, moveIngredient } from '../../services/actions/ingredients-constructor';
+import { setBun, addIngredient, deleteIngredient } from '../../services/actions/ingredients-constructor';
 import { BurgerElement } from '../burger-element/burger-element';
+import { TIngredientCard, TIngredientType } from '../../services/types/types';
 
-export function BurgerConstructor() {
+export const BurgerConstructor = () => {
 
   const elements = useSelector(state => state.constructorList.constructorList)
   const buns = useSelector(state => state.constructorList.buns)
   const dispatch = useDispatch();
 
-  const [, dropConstructor] = useDrop(() => ({
-    accept: 'item',
-    drop: (item => moveIngredient(item.ingredient))
-  }))
-
   const [, dropIngredient] = useDrop(() => ({
     accept: 'card',
-    drop: (item => addCardElement(item.ingredient))
+    drop: ((item: TIngredientCard) => addCardElement(item.ingredient))
   }))
 
-  const addCardElement = (element) => {
+  const addCardElement = (element: TIngredientType) => {
     element = { ...element, id: nanoid() }
     if (element.type === 'bun') {
       dispatch(setBun(element))
@@ -32,8 +28,8 @@ export function BurgerConstructor() {
     }
   }
 
-  const deleteElement = (ingredient) => {
-    dispatch(deleteIngredient(ingredient))
+  const deleteElement = (element: TIngredientType) => {
+    dispatch(deleteIngredient(element))
   }
 
   return (
@@ -53,7 +49,7 @@ export function BurgerConstructor() {
               </li>
             )
         })}
-        <li className={styles.smallScroll} ref={dropConstructor}>
+        <li className={styles.smallScroll}>
           {elements.map((element, index) => {
             if (element.type !== 'bun')
               return (

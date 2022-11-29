@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
 import styles from './pages.module.css';
 import { EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../services/hooks/hooks';
 import { getUserLogin } from '../services/actions/login';
+import { FormEventHandler } from 'react';
+import { useForm } from '../services/hooks/useForm';
 
-export function LoginPage() {
+export const LoginPage = () => {
 
     const dispatch = useDispatch();
     const authorization = useSelector(state => state.getLogin.login);
 
-    const [value, setValue] = useState({
-        email: '',
-        password: ''
-    })
-    const handleLogin = (event) => {
+    const { values, setValues } = useForm({ email: '', password: '' })
+
+    const handleLogin: FormEventHandler = (event) => {
         event.preventDefault();
-        dispatch(getUserLogin(value.email, value.password));
+        dispatch(getUserLogin(values.email, values.password))
     }
 
     if (authorization) {
@@ -26,17 +25,17 @@ export function LoginPage() {
 
     return (
         <form className={styles.form} onSubmit={handleLogin}>
-            <h1 className="text text_type_main-medium mb-6">Вход</h1>
+            <h3 className="text text_type_main-medium mb-6">Вход</h3>
             <EmailInput
-                onChange={(event) => setValue({ ...value, email: event.target.value })}
-                value={value.email}
+                onChange={(event) => setValues({ ...values, email: event.target.value })}
+                value={values.email}
                 name={'email'}
                 isIcon={false}
                 extraClass="mb-6"
             />
             <PasswordInput
-                onChange={(event) => setValue({ ...value, password: event.target.value })}
-                value={value.password}
+                onChange={(event) => setValues({ ...values, password: event.target.value })}
+                value={values.password}
                 name={'password'}
                 extraClass="mb-6"
             />

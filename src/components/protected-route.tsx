@@ -1,7 +1,7 @@
 import { Route, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector } from '../services/hooks/hooks';
 
-export const ProtectedRoute = (props) => {
+export const ProtectedRoute = (props: any) => {
 
     const authorization = useSelector(state => state.getLogin.login);
 

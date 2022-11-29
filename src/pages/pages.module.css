@@ -37,13 +37,7 @@
   flex-direction: column;
 }
 
-/* Страница ингредиентов
-  .details {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  
+/* Страница ингредиентов */
   .description {
     display: flex;
     justify-content: space-around;
@@ -52,7 +46,7 @@
     width: 516px;
     margin: 0;
     padding: 0;
-  } */
+  }
 
 /* Ошибка 404 */
 .container {

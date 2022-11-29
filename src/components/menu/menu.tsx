@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import styles from './menu.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '../../services/hooks/hooks';
 import { NavLink } from 'react-router-dom';
 import { userLogout } from '../../services/actions/logout';
 
-export function Menu() {
+export const Menu = () => {
 
     const dispatch = useDispatch();
 

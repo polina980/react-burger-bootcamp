@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
 import styles from './pages.module.css';
-import { EmailInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Redirect } from 'react-router-dom';
 import { createNewPassword } from '../services/actions/password-forgot';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../services/hooks/hooks';
+import { FormEventHandler } from 'react';
+import { useForm } from '../services/hooks/useForm';
 
-export function ForgotPassword() {
-
-    const authorization = useSelector(state => state.passwordForgot.success);
+export const ForgotPassword = () => {
 
     const dispatch = useDispatch();
-    const [value, setValue] = useState({ email: '' });
+    const authorization = useSelector(state => state.passwordForgot.success);
 
-    const emailData = ((event) => {
+    const { values, setValues } = useForm({ email: '' });
+
+    const emailData: FormEventHandler = (event) => {
         event.preventDefault();
-        dispatch(createNewPassword(value.email));
-    })
+        dispatch(createNewPassword(values.email))
+    }
 
     if (authorization) {
         return (<Redirect to={'/reset-password'} />)
@@ -23,10 +24,10 @@ export function ForgotPassword() {
 
     return (
         <form className={styles.form} onSubmit={(event) => emailData(event)}>
-            <h1 className="text text_type_main-medium mb-6">Восстановление пароля</h1>
-            <EmailInput
-                onChange={(evt) => setValue({ ...value, email: evt.target.value })}
-                value={value.email}
+            <h3 className="text text_type_main-medium mb-6">Восстановление пароля</h3>
+            <Input
+                onChange={(event) => setValues({ ...values, email: event.target.value })}
+                value={values.email}
                 name={'email'}
                 placeholder={'Укажите e-mail'}
                 extraClass="mb-6"

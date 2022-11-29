@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { FormEventHandler, useEffect, useState } from 'react';
 import styles from './profile-form.module.css';
 import { patchUserInfo } from '../../services/actions/user';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../../services/hooks/hooks';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
-export function ProfileForm() {
+export const ProfileForm = () => {
 
     const dispatch = useDispatch();
     const userName = useSelector(state => state.userInfo.user.name);
@@ -24,7 +24,7 @@ export function ProfileForm() {
         })
     }, [userName, userEmail])
 
-    const saveInfo = (event) => {
+    const saveInfo: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
         dispatch(patchUserInfo(value.name, value.email, value.password));
     }
@@ -40,7 +40,7 @@ export function ProfileForm() {
     const render = value.name !== userName || value.email !== userEmail || value.password.length >= 6;
 
     return (
-        <form>
+        <form onSubmit={saveInfo}>
             <Input
                 onChange={event => setValue({ ...value, name: event.target.value })}
                 value={value.name}
@@ -54,7 +54,7 @@ export function ProfileForm() {
                 value={value.email}
                 name={'email'}
                 placeholder={'Логин'}
-                icon={'EditIcon'}
+                //icon={'EditIcon'}
                 extraClass="mb-6"
             />
             <PasswordInput
@@ -73,7 +73,6 @@ export function ProfileForm() {
                     Отмена
                 </Button>
                 <Button
-                    onClick={(event) => saveInfo(event)}
                     type='primary'
                     htmlType="submit"
                     size='medium'>

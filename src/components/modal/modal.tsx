@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import styles from './modal.module.css';
 import { createPortal } from 'react-dom';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { ModalOverlay } from '../modal-overlay/modal-overlay';
+import { TModalFunction } from '../../services/types/types';
 
-function ModalFunction({ children, onClose, title }) {
+const ModalFunction: FC<TModalFunction> = ({ children, onClose, title }) => {
 
   useEffect(() => {
-    function onKeyDown(event) {
+    function onKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         onClose()
       }
@@ -30,7 +31,7 @@ function ModalFunction({ children, onClose, title }) {
         {children}
       </div>
     </>,
-    document.getElementById('modals')
+    document.getElementById('modals') as HTMLDivElement
   )
 }
 

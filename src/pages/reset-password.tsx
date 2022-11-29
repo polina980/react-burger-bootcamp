@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React, { FormEventHandler } from 'react';
 import styles from './pages.module.css';
 import { PasswordInput, Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { confirmNewPassword } from '../services/actions/password-reset'
+import { useDispatch, useSelector } from '../services/hooks/hooks';
+import { confirmNewPassword } from '../services/actions/password-reset';
+import { useForm } from '../services/hooks/useForm';
 
-export function ResetPassword() {
-
-    const authorization = useSelector(state => state.passwordReset.success);
+export const ResetPassword = () => {
 
     const dispatch = useDispatch();
-    const [value, setValue] = useState({ password: '', token: '' });
+    const authorization = useSelector(state => state.passwordReset.success);
 
-    const resetData = ((event) => {
+    const { values, setValues } = useForm({ password: '', token: '' });
+
+    const resetData: FormEventHandler = (event) => {
         event.preventDefault();
-        dispatch(confirmNewPassword(value.password, value.token))
-    })
+        dispatch(confirmNewPassword(values.password, values.token))
+    }
 
     if (authorization) {
         return (
@@ -25,17 +26,17 @@ export function ResetPassword() {
 
     return (
         <form className={styles.form} onSubmit={(event) => resetData(event)}>
-            <h1 className="text text_type_main-medium mb-6">Восстановление пароля</h1>
+            <h3 className="text text_type_main-medium mb-6">Восстановление пароля</h3>
             <PasswordInput
-                onChange={event => setValue({ ...value, password: event.target.value })}
-                value={value.password}
+                onChange={(event) => setValues({ ...values, password: event.target.value })}
+                value={values.password}
                 name={'password'}
                 placeholder={'Введите новый пароль'}
                 extraClass="mb-6"
             />
             <Input
-                onChange={event => setValue({ ...value, token: event.target.value })}
-                value={value.token}
+                onChange={(event) => setValues({ ...values, token: event.target.value })}
+                value={values.token}
                 type={'text'}
                 placeholder={'Введите код из письма'}
                 extraClass="mb-6"

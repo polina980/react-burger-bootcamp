@@ -1,11 +1,12 @@
 import styles from './ingredient-card.module.css';
 import { useDrag } from 'react-dnd';
-import { useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { FC, useMemo } from 'react';
+import { useSelector, useDispatch } from '../../services/hooks/hooks';
 import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 import { setIgredientDetails } from '../../services/actions/ingredient-details';
+import { TIngredientCard } from '../../services/types/types';
 
-export function IngredientCard({ ingredient }) {
+export const IngredientCard: FC<TIngredientCard> = ({ ingredient }) => {
 
   const elements = useSelector(state => state.constructorList.constructorList);
   const buns = useSelector(state => state.constructorList.buns);
@@ -31,7 +32,7 @@ export function IngredientCard({ ingredient }) {
   return (
     <button className={styles.cardButton} onClick={handleIngredientClick} ref={dragIngredient}>
       <img src={ingredient.image} alt={ingredient.name} />
-      {count > 0 ? <Counter id={ingredient._id} count={count} size="small" /> : null}
+      {count > 0 ? <Counter count={count} size="small" /> : null}
       <div className={styles.priceBlock}>
         <p className="text text_type_digits-default pt-2 pr-2">{ingredient.price}</p>
         <CurrencyIcon type="primary" />

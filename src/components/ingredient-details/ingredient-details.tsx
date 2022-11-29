@@ -1,7 +1,7 @@
 import styles from './ingredient-details.module.css';
-import { useSelector } from 'react-redux';
+import { useSelector } from '../../services/hooks/hooks';
 
-export function IngredientDetails() {
+export const IngredientDetails = () => {
 
   const ingredient = useSelector(state => state.ingredientDetails.ingredientDetails)
 

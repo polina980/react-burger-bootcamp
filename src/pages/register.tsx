@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
 import styles from './pages.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Redirect } from 'react-router-dom';
 import { createNewAccount } from '../services/actions/register';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../services/hooks/hooks';
+import { FormEventHandler } from 'react';
+import { useForm } from '../services/hooks/useForm';
 
-export function Registration() {
-
-    const authorization = useSelector(state => state.registration.success);
+export const Registration = () => {
 
     const dispatch = useDispatch();
-    const [value, setValue] = useState({ name: '', email: '', password: '' });
+    const authorization = useSelector(state => state.registration.success);
 
-    const registrationData = ((event) => {
+    const { values, setValues } = useForm({ name: '', email: '', password: '' });
+
+    const registrationData: FormEventHandler = (event) => {
         event.preventDefault();
-        dispatch(createNewAccount(value.name, value.email, value.password))
-    })
+        dispatch(createNewAccount(values.name, values.email, values.password))
+    }
 
     if (authorization) {
         return (<Redirect to={'/login'} />)
@@ -23,24 +24,24 @@ export function Registration() {
 
     return (
         <form className={styles.form} onSubmit={(event) => registrationData(event)} >
-            <h1 className="text text_type_main-medium mb-6">Регистрация</h1>
+            <h3 className="text text_type_main-medium mb-6">Регистрация</h3>
             <Input
-                onChange={(event) => setValue({ ...value, name: event.target.value })}
+                onChange={(event) => setValues({ ...values, name: event.target.value })}
                 type={'text'}
                 placeholder={'Имя'}
-                value={value.name}
+                value={values.name}
                 name={'name'}
                 extraClass="mb-6"
             />
             <EmailInput
-                onChange={(event) => setValue({ ...value, email: event.target.value })}
-                value={value.email}
+                onChange={(event) => setValues({ ...values, email: event.target.value })}
+                value={values.email}
                 name={'email'}
                 extraClass="mb-6"
             />
             <PasswordInput
-                onChange={(event) => setValue({ ...value, password: event.target.value })}
-                value={value.password}
+                onChange={(event) => setValues({ ...values, password: event.target.value })}
+                value={values.password}
                 name={'password'}
                 extraClass="mb-6"
             />

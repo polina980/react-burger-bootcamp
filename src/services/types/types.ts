@@ -9,7 +9,7 @@ export type AppThunk<ReturnType = void> = ActionCreator<
   ThunkAction<ReturnType, RootState, never, TUnionAction>
 >
 
-export type AppDispatch = Dispatch<TUnionAction>; 
+export type AppDispatch = Dispatch<TUnionAction>;
 
 export type TIngredientType = {
   _id: string,
@@ -57,13 +57,17 @@ export type TIngredientCard = {
 
 export type TIngredientsSet = {
   type: string,
-  title: string
+  title: string,
+  refElement?: {
+    current: any
+  }
 }
 
 export type TModalFunction = {
   children: ReactNode,
   onClose: () => void,
-  title: string
+  onClick?: () => void,
+  title?: string
 }
 
 export type TModalOverlay = {
@@ -73,6 +77,3 @@ export type TModalOverlay = {
 export type TPriceCount = {
   onClick: () => void
 }
-
-
-// дописать пропсы в BurgerElement, IngredientCard, IngredientsSet, ModalFunction, ModalOverlay, PriceCount

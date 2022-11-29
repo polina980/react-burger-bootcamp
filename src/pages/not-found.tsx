@@ -5,7 +5,7 @@ export const PageNotFound = () => {
 
   return (
     <main className={styles.container}>
-      <h2 className='text text_type_main-large mb-10'>Ошибка 404: страница не найдена</h2>
+      <h1 className='text text_type_main-large mb-10'>Ошибка 404: страница не найдена</h1>
       <Link
         to='/'
         className={`${styles.linkNotFound} text text_type_main-medium`}>

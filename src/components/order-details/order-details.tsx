@@ -1,8 +1,8 @@
 import styles from './order-details.module.css';
-import { useSelector } from 'react-redux';
+import { useSelector } from '../../services/hooks/hooks';
 import done from '../../images/done.png';
 
-export function OrderDetails() {
+export const OrderDetails = () => {
 
   const orderId = useSelector(state => state.orderDetails.id)
 

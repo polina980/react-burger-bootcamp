@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import styles from './pages.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '../services/hooks/hooks';
 import { getUserInfo } from '../services/actions/user';
 import { Route } from 'react-router-dom';
 import { ProfileForm } from '../components/profile-form/profile-form';
 import { OrdersHistory } from '../components/orders-history/orders-history';
 import { Menu } from '../components/menu/menu';
 
-export function ProfilePage() {
+export const ProfilePage = () => {
 
     const dispatch = useDispatch();
 
