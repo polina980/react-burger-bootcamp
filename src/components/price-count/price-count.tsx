@@ -1,8 +1,8 @@
+import React, { FC, useMemo } from 'react';
 import styles from './price-count.module.css';
 import CurrencyIconBig from '../../images/currency-icon-big.png';
 import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useSelector } from '../../services/hooks/hooks';
-import { FC, useMemo } from 'react';
 import { TPriceCount } from '../../services/types/types';
 
 export const PriceCount: FC<TPriceCount> = ({ onClick }) => {

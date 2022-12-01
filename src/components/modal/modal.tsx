@@ -18,7 +18,7 @@ const ModalFunction: FC<TModalFunction> = ({ children, onClose, title }) => {
     return () => {
       document.removeEventListener('keydown', onKeyDown)
     }
-  }, [onClose])
+  }, [])
 
   return createPortal(
     <>

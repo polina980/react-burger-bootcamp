@@ -3,7 +3,7 @@ import { useSelector } from '../services/hooks/hooks';
 
 export const IngredientPage = () => {
 
-    const ingredient = useSelector(state => state.ingredientDetails.ingredientDetails)
+    const ingredient = useSelector(state => state.ingredientDetails.ingredientDetails);
 
     return (
         <div className={styles.form}>

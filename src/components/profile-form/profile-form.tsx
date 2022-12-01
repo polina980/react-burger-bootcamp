@@ -2,7 +2,7 @@ import React, { FormEventHandler, useEffect, useState } from 'react';
 import styles from './profile-form.module.css';
 import { patchUserInfo } from '../../services/actions/user';
 import { useDispatch, useSelector } from '../../services/hooks/hooks';
-import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Input, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 
 export const ProfileForm = () => {
 
@@ -49,12 +49,12 @@ export const ProfileForm = () => {
                 icon={'EditIcon'}
                 extraClass="mb-6"
             />
-            <EmailInput
+            <Input
                 onChange={event => setValue({ ...value, email: event.target.value })}
                 value={value.email}
                 name={'email'}
                 placeholder={'Логин'}
-                //icon={'EditIcon'}
+                icon={'EditIcon'}
                 extraClass="mb-6"
             />
             <PasswordInput

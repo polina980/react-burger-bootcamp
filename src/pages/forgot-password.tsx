@@ -9,7 +9,7 @@ import { useForm } from '../services/hooks/useForm';
 export const ForgotPassword = () => {
 
     const dispatch = useDispatch();
-    const authorization = useSelector(state => state.passwordForgot.success);
+    const forgot = useSelector(state => state.passwordForgot.success);
 
     const { values, setValues } = useForm({ email: '' });
 
@@ -18,7 +18,7 @@ export const ForgotPassword = () => {
         dispatch(createNewPassword(values.email))
     }
 
-    if (authorization) {
+    if (forgot) {
         return (<Redirect to={'/reset-password'} />)
     }
 

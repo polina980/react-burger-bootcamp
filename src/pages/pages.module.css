@@ -38,15 +38,15 @@
 }
 
 /* Страница ингредиентов */
-  .description {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    list-style-type: none;
-    width: 516px;
-    margin: 0;
-    padding: 0;
-  }
+.description {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  list-style-type: none;
+  width: 516px;
+  margin: 0;
+  padding: 0;
+}
 
 /* Ошибка 404 */
 .container {

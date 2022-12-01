@@ -1,6 +1,6 @@
 import { getCookie } from "./cookie";
 
-interface IApiConfig {
+interface TApiConfig {
   baseUrl: string,
   defaultHeaders: {
     'Content-Type': string
@@ -61,7 +61,7 @@ class Api {
     authorization, register, logout,
     token, user, passwordForgot,
     passwordReset, defaultHeaders
-  }: IApiConfig) {
+  }: TApiConfig) {
     this.baseUrl = baseUrl;
     this.ingredientsEndpoint = ingredients;
     this.orderEndpoint = order;

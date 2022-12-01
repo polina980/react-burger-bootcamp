@@ -9,7 +9,8 @@ import { useForm } from '../services/hooks/useForm';
 export const ResetPassword = () => {
 
     const dispatch = useDispatch();
-    const authorization = useSelector(state => state.passwordReset.success);
+    const reset = useSelector(state => state.passwordReset.success);
+    const forgot = useSelector(state => state.passwordForgot.success);
 
     const { values, setValues } = useForm({ password: '', token: '' });
 
@@ -18,10 +19,14 @@ export const ResetPassword = () => {
         dispatch(confirmNewPassword(values.password, values.token))
     }
 
-    if (authorization) {
+    if (reset) {
         return (
             <Redirect to={'/login'} />
         )
+    }
+
+    if (!forgot) {
+        return (<Redirect to={'/forgot-password'} />)
     }
 
     return (
