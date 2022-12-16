@@ -13,7 +13,7 @@ export const Menu = () => {
     }, [dispatch])
 
     return (
-        <nav>
+        <nav className={styles.menuBlock}>
             <NavLink
                 to='/profile'
                 exact={true}

@@ -16,9 +16,12 @@ export const Main = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const authorization = useSelector(state => state.getLogin.login);
-  const ingredients = useSelector(state => state.ingredientsList.ingredientsList);
+
+  const main = useSelector(state => state.constructorList.constructorList);
   const buns = useSelector(state => state.constructorList.buns);
-  const idList = (ingredients.map(element => element._id));
+  const mainList = (main.map((element) => element._id))
+  const bunsList = (buns.map((element) => element._id))
+  const idList = mainList.concat(bunsList).concat(bunsList)
 
   const [openOrderModal, setOrderOpenModal] = useState(false);
 

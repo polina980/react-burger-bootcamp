@@ -1,9 +1,9 @@
+import React, { ChangeEvent, FormEventHandler } from 'react';
 import styles from './pages.module.css';
 import { EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from '../services/hooks/hooks';
 import { getUserLogin } from '../services/actions/login';
-import { FormEventHandler } from 'react';
 import { useForm } from '../services/hooks/useForm';
 
 export const LoginPage = () => {
@@ -13,7 +13,7 @@ export const LoginPage = () => {
 
     const { values, setValues } = useForm({ email: '', password: '' })
 
-    const handleLogin: FormEventHandler = (event) => {
+    const handleLogin: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
         dispatch(getUserLogin(values.email, values.password))
     }
@@ -27,14 +27,14 @@ export const LoginPage = () => {
         <form className={styles.form} onSubmit={handleLogin}>
             <h3 className="text text_type_main-medium mb-6">Вход</h3>
             <EmailInput
-                onChange={(event) => setValues({ ...values, email: event.target.value })}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, email: event.target.value })}
                 value={values.email}
                 name={'email'}
                 isIcon={false}
                 extraClass="mb-6"
             />
             <PasswordInput
-                onChange={(event) => setValues({ ...values, password: event.target.value })}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, password: event.target.value })}
                 value={values.password}
                 name={'password'}
                 extraClass="mb-6"

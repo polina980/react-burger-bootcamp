@@ -24,17 +24,18 @@ const AppHeaderFunction = () => {
             </p>
           </NavLink>
 
-          <a
-            href='#'
+          <NavLink
+            to='/feed'
+            exact={true}
             className={styles.link}>
-            <ListIcon type={pathname === '#' ? "primary" : "secondary"} />
-            <p className={pathname === '#'
+            <ListIcon type={pathname === '/feed' ? "primary" : "secondary"} />
+            <p className={pathname === '/feed'
               ? `${styles.active} text text_type_main-default`
               : `text text_type_main-default text_color_inactive`}
             >
               Лента заказов
             </p>
-          </a>
+          </NavLink>
         </div>
 
         <Logo />

@@ -77,3 +77,41 @@ export type TModalOverlay = {
 export type TPriceCount = {
   onClick: () => void
 }
+
+export type TLocation = {
+  background: TLocation;
+  hash: string;
+  key: string;
+  pathname: string;
+  search: string;
+  from: string;
+  state: {
+    background?: {
+      pathname: string;
+      search: string;
+      hash: string;
+      key: string;
+    };
+  };
+}
+
+export type TOrder = {
+  ingredients: Array<string>,
+  _id: string,
+  status: string,
+  number: number,
+  createdAt: string,
+  updatedAt: string,
+  name: string
+}
+
+export type TOrderProps = {
+  order: TOrder
+}
+
+export type TOrders = {
+  success: boolean,
+  orders: Array<TOrder>,
+  total: number,
+  totalToday: number
+}

@@ -1,10 +1,10 @@
-import styles from './orders-history.module.css';
+import styles from './orders-history-user.module.css';
 import { OrderCard } from '../order-card/order-card';
 import { useSelector } from '../../services/hooks/hooks';
 
-export const OrdersHistory = () => {
+export const OrdersHistoryUser = () => {
 
-  const orders = useSelector(state => state.webSocket.orders);
+  const orders = useSelector(state => state.webSocketUser.orders);
 
   return (
     <section>

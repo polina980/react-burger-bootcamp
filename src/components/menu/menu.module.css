@@ -1,3 +1,8 @@
+.menuBlock {
+    width: 320px;
+    margin-top: 120px;
+}
+
 .profileMenu {
     display: flex;
     align-items: center;

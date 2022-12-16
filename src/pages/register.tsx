@@ -1,9 +1,9 @@
+import React, { ChangeEvent, FormEventHandler } from 'react';
 import styles from './pages.module.css';
 import { Input, EmailInput, PasswordInput, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Redirect } from 'react-router-dom';
 import { createNewAccount } from '../services/actions/register';
 import { useDispatch, useSelector } from '../services/hooks/hooks';
-import { FormEventHandler } from 'react';
 import { useForm } from '../services/hooks/useForm';
 
 export const Registration = () => {
@@ -13,7 +13,7 @@ export const Registration = () => {
 
     const { values, setValues } = useForm({ name: '', email: '', password: '' });
 
-    const registrationData: FormEventHandler = (event) => {
+    const registrationData: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
         dispatch(createNewAccount(values.name, values.email, values.password))
     }
@@ -26,7 +26,7 @@ export const Registration = () => {
         <form className={styles.form} onSubmit={(event) => registrationData(event)} >
             <h3 className="text text_type_main-medium mb-6">Регистрация</h3>
             <Input
-                onChange={(event) => setValues({ ...values, name: event.target.value })}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, name: event.target.value })}
                 type={'text'}
                 placeholder={'Имя'}
                 value={values.name}
@@ -34,13 +34,13 @@ export const Registration = () => {
                 extraClass="mb-6"
             />
             <EmailInput
-                onChange={(event) => setValues({ ...values, email: event.target.value })}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, email: event.target.value })}
                 value={values.email}
                 name={'email'}
                 extraClass="mb-6"
             />
             <PasswordInput
-                onChange={(event) => setValues({ ...values, password: event.target.value })}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, password: event.target.value })}
                 value={values.password}
                 name={'password'}
                 extraClass="mb-6"

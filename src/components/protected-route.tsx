@@ -1,19 +1,19 @@
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, RouteProps } from 'react-router-dom';
 import { useSelector } from '../services/hooks/hooks';
 
-export const ProtectedRoute = (props: any) => {
+export const ProtectedRoute = ({ component, path }: RouteProps) => {
 
     const authorization = useSelector(state => state.getLogin.login);
 
     if (!authorization) {
 
         return (
-            <Route path={props.path} exact={props.exact}>
+            <Route path={path} component={component}>
                 <Redirect
                     to={'/login?retpath=/profile'}
                 />
             </Route>
         )
     }
-    return <Route {...props} />
+    return <Route path={path} component={component} />
 }

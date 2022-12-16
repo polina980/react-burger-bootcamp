@@ -1,9 +1,12 @@
 import styles from './ingredient-details.module.css';
 import { useSelector } from '../../services/hooks/hooks';
+import { useParams } from 'react-router-dom';
 
 export const IngredientDetails = () => {
 
-  const ingredient = useSelector(state => state.ingredientDetails.ingredientDetails)
+  const ingredients = useSelector(state => state.ingredientsList.ingredientsList);
+  const params = useParams<{ id?: string }>();
+  const ingredient = ingredients.find((item) => item._id === params.id);
 
   if (!ingredient) {
     return null

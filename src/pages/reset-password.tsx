@@ -1,4 +1,4 @@
-import React, { FormEventHandler } from 'react';
+import React, { ChangeEvent, FormEventHandler } from 'react';
 import styles from './pages.module.css';
 import { PasswordInput, Input, Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link, Redirect } from 'react-router-dom';
@@ -14,7 +14,7 @@ export const ResetPassword = () => {
 
     const { values, setValues } = useForm({ password: '', token: '' });
 
-    const resetData: FormEventHandler = (event) => {
+    const resetData: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
         dispatch(confirmNewPassword(values.password, values.token))
     }
@@ -33,14 +33,14 @@ export const ResetPassword = () => {
         <form className={styles.form} onSubmit={(event) => resetData(event)}>
             <h3 className="text text_type_main-medium mb-6">Восстановление пароля</h3>
             <PasswordInput
-                onChange={(event) => setValues({ ...values, password: event.target.value })}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, password: event.target.value })}
                 value={values.password}
                 name={'password'}
                 placeholder={'Введите новый пароль'}
                 extraClass="mb-6"
             />
             <Input
-                onChange={(event) => setValues({ ...values, token: event.target.value })}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, token: event.target.value })}
                 value={values.token}
                 type={'text'}
                 placeholder={'Введите код из письма'}
