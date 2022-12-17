@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-.textDone {
+.textColor {
   color: #00CCCC;
 }
 
@@ -29,9 +29,10 @@
 
 .ingredient {
   display: grid;
-  grid-template-columns: 64px 1fr 125px;
+  grid-template-columns: 64px 1fr 130px;
   gap: 16px;
   align-items: center;
+  width: 616px;
 }
 
 .image {
@@ -47,10 +48,11 @@
   display: flex;
   align-items: center;
   justify-content: end;
+  gap: 8px;
 }
 
 .total {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin: 40px auto;
 }

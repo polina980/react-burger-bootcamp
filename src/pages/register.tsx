@@ -48,7 +48,8 @@ export const Registration = () => {
             <Button
                 type="primary"
                 htmlType="submit"
-                size="medium">
+                size="medium"
+            >
                 Зарегистрироваться
             </Button>
             <div className={`${styles.line} mt-20`}>

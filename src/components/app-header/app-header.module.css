@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.headerNavigation {
+.navigation {
   max-width: 1240px;
   white-space: nowrap;
   display: grid;

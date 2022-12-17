@@ -34,11 +34,11 @@ export const BurgerConstructor = () => {
 
   return (
     <section className={styles.total} ref={dropIngredient}>
-      <ul className={styles.ingredientsList}>
+      <ul className={styles.list}>
         {buns.map((element) => {
           if (element.type === 'bun')
             return (
-              <li className={styles.listElement} key={element.id}>
+              <li className={styles.element} key={element.id}>
                 <ConstructorElement
                   type="top"
                   isLocked={true}
@@ -49,7 +49,7 @@ export const BurgerConstructor = () => {
               </li>
             )
         })}
-        <li className={styles.smallScroll}>
+        <li className={styles.scroll}>
           {elements.map((element, index) => {
             if (element.type !== 'bun')
               return (
@@ -66,7 +66,7 @@ export const BurgerConstructor = () => {
         {buns.map((element) => {
           if (element.type === 'bun')
             return (
-              <li className={styles.listElement} key={element.id}>
+              <li className={styles.element} key={element.id}>
                 <ConstructorElement
                   type="bottom"
                   isLocked={true}

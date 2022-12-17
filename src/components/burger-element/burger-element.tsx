@@ -56,13 +56,15 @@ export const BurgerElement: FC<TBurgerElement> = ({ element, deleteElement, id, 
 
   drag(drop(ref))
 
-  return (<div className={styles.listElement} key={element.id} ref={ref}>
-    <DragIcon type="primary" />
-    <ConstructorElement
-      handleClose={() => deleteElement(element)}
-      text={element.name}
-      price={element.price}
-      thumbnail={element.image}
-    />
-  </div>)
+  return (
+    <div className={styles.element} key={element.id} ref={ref}>
+      <DragIcon type="primary" />
+      <ConstructorElement
+        handleClose={() => deleteElement(element)}
+        text={element.name}
+        price={element.price}
+        thumbnail={element.image}
+      />
+    </div>
+  )
 }

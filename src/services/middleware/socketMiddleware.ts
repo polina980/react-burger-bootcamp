@@ -1,7 +1,8 @@
-import { Middleware } from "redux";
-import { IWsActions } from "../actions/interfaces";
+import { Middleware } from 'redux';
+import { IWsActions } from '../actions/interfaces';
 
 export const socketMiddleware = (wsUrl: () => string, wsActions: IWsActions): Middleware => {
+
     return (store) => {
         let socket: WebSocket | null = null;
         return next => action => {

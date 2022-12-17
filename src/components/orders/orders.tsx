@@ -1,5 +1,5 @@
+import styles from './orders.module.css';
 import { useSelector } from '../../services/hooks/hooks';
-import styles from './all-orders.module.css';
 
 export const Orders = () => {
 
@@ -17,7 +17,7 @@ export const Orders = () => {
                             .map((order) => {
                                 if (order.status === 'done') {
                                     return (
-                                        <li key={order._id} className={`${styles.textDone} text text_type_digits-default`} >{order.number}</li>
+                                        <li key={order._id} className={`${styles.textColor} text text_type_digits-default`} >{order.number}</li>
                                     )
                                 }
                             })}

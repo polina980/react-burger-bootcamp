@@ -9,7 +9,7 @@
   cursor: pointer;
 }
 
-.priceBlock {
+.price {
   display: flex;
   align-items: flex-end;
 }

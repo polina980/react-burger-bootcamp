@@ -8,7 +8,8 @@ export const PageNotFound = () => {
       <h1 className='text text_type_main-large mb-10'>Ошибка 404: страница не найдена</h1>
       <Link
         to='/'
-        className={`${styles.linkNotFound} text text_type_main-medium`}>
+        className={`${styles.linkNotFound} text text_type_main-medium`}
+      >
         Вернуться на главную страницу
       </Link>
     </main>

@@ -49,7 +49,8 @@ export const ResetPassword = () => {
             <Button
                 type="primary"
                 htmlType="submit"
-                size="medium">
+                size="medium"
+            >
                 Сохранить
             </Button>
             <div className={`${styles.line} mt-20`}>

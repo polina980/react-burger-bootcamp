@@ -4,7 +4,7 @@ import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components
 import { TOrderProps } from '../../services/types/types';
 import { useSelector } from '../../services/hooks/hooks';
 import { useHistory, useLocation } from 'react-router-dom';
-import { conversionDateForCard } from '../../utils/date';
+import { conversionDate } from '../../utils/date';
 
 function inNotUndefined<T>(item: T | undefined): item is T {
     return item !== undefined
@@ -43,25 +43,24 @@ export const OrderCard: FC<TOrderProps> = ({ order }) => {
         }
     }
 
-    const date = conversionDateForCard(order.createdAt);
+    const date = conversionDate(order.createdAt);
 
     return (
-        <div onClick={openOrderDetails} className={styles.historyBlock}>
-            <div className={styles.firstString}>
+        <div onClick={openOrderDetails} className={styles.main}>
+            <div className={styles.numbers}>
                 <p className='text text_type_digits-default mt-6'>#{order.number}</p>
                 <p className='text text_type_main-default text_color_inactive mt-6'>{date}</p>
             </div>
             <h3 className={`${styles.text} text text_type_main-medium mt-6 mb-6`}>{order.name}</h3>
-            <div className={styles.lastBlock}>
+            <div className={styles.ingredients}>
                 <ul className={styles.list}>
                     {orderIngredientsForImage.map(image =>
                         <li className={styles.ingredientFrame} key={image._id}>
                             <img className={styles.ingredientImage} src={image.image_mobile} />
-                            {/* <span className={`${styles.span}text text_type_main-default`}>5</span> */}
                         </li>
                     )}
                 </ul>
-                <div className={`${styles.priceBlock} mt-6 mb-6`}>
+                <div className={`${styles.price} mt-6 mb-6`}>
                     <p className='text text_type_digits-default ml-6 mr-2'>{totalOrderPrice}</p>
                     <CurrencyIcon type="primary" />
                 </div>

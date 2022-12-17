@@ -3,9 +3,9 @@ import styles from './pages.module.css';
 import { useDispatch } from '../services/hooks/hooks';
 import { getUserInfo } from '../services/actions/user';
 import { Route } from 'react-router-dom';
+import { Menu } from '../components/menu/menu';
 import { ProfileForm } from '../components/profile-form/profile-form';
 import { OrdersHistoryUser } from '../components/orders-history-user/orders-history-user';
-import { Menu } from '../components/menu/menu';
 import { wsConnectionStartUser, wsConnectionClosedUser } from '../services/actions/wsActions';
 
 export const ProfilePage = () => {

@@ -7,7 +7,7 @@ export const OrdersHistoryUser = () => {
   const orders = useSelector(state => state.webSocketUser.orders);
 
   return (
-    <section>
+    <>
       <ul className={styles.scroll}>
         {orders.map(order =>
           <li key={order._id}>
@@ -15,6 +15,6 @@ export const OrdersHistoryUser = () => {
           </li>
         )}
       </ul>
-    </section>
+    </>
   )
 }

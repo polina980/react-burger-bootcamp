@@ -69,13 +69,15 @@ export const ProfileForm = () => {
                     onClick={cancelChanges}
                     type="secondary"
                     htmlType="reset"
-                    size='medium'>
+                    size='medium'
+                >
                     Отмена
                 </Button>
                 <Button
                     type='primary'
                     htmlType="submit"
-                    size='medium'>
+                    size='medium'
+                >
                     Сохранить
                 </Button>
             </div> : null}

@@ -9,7 +9,7 @@ const AppHeaderFunction = () => {
 
   return (
     <header className={styles.header}>
-      <nav className={styles.headerNavigation}>
+      <nav className={styles.navigation}>
         <div className={styles.twoBlocks}>
           <NavLink
             to='/'

@@ -43,7 +43,7 @@ export const IngredientCard: FC<TIngredientCard> = ({ ingredient }) => {
           <img src={ingredient.image} alt={ingredient.name} />
         </Link>
         {count > 0 ? <Counter count={count} size="small" /> : null}
-        <div className={styles.priceBlock}>
+        <div className={styles.price}>
           <p className="text text_type_digits-default pt-2 pr-2">{ingredient.price}</p>
           <CurrencyIcon type="primary" />
         </div>

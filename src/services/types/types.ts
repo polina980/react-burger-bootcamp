@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
-import { ThunkAction } from "redux-thunk";
-import { ActionCreator, Dispatch } from "redux";
-import { store } from "../store";
-import { TUnionAction } from "../actions/interfaces";
+import { ReactNode } from 'react';
+import { ThunkAction } from 'redux-thunk';
+import { ActionCreator, Dispatch } from 'redux';
+import { store } from '../store';
+import { TUnionAction } from '../actions/interfaces';
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppThunk<ReturnType = void> = ActionCreator<

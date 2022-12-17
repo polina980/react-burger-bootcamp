@@ -1,10 +1,17 @@
 import styles from './order-details.module.css';
 import { useSelector } from '../../services/hooks/hooks';
 import Done from '../../images/done.png';
+import Loader from '../loader/loader';
 
 export const OrderDetails = () => {
 
   const orderId = useSelector(state => state.orderDetails.id)
+
+  if (!orderId) {
+    return (
+      <Loader />
+    )
+  }
 
   return (
     <div className={styles.order}>

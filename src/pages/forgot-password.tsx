@@ -35,7 +35,8 @@ export const ForgotPassword = () => {
             <Button
                 type="primary"
                 htmlType="submit"
-                size="medium">
+                size="medium"
+            >
                 Восстановить
             </Button>
             <div className={`${styles.line} mt-20`}>

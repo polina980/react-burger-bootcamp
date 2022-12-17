@@ -9,15 +9,14 @@ import { ProtectedRoute } from '../protected-route';
 import {
   Main, Registration, LoginPage,
   ForgotPassword, ResetPassword, ProfilePage,
-  FeedPage, IngredientPage, PageNotFound
+  FeedPage, IngredientPage, PageNotFound,
+  FeedId, OrderId
 } from '../../pages/index';
 import { TLocation } from '../../services/types/types';
 import { Modal } from '../../components/modal/modal';
 import { IngredientDetails } from '../../components/ingredient-details/ingredient-details';
 import { OrderInfo } from '../order-info/order-info';
 import { OrderInfoUser } from '../order-info-user/order-info-user';
-import { FeedId } from '../../pages/feed-id';
-import { OrderId } from '../../pages/order-id';
 
 export const App = () => {
 
@@ -32,6 +31,10 @@ export const App = () => {
 
   const closeIngredientsModal = useCallback(() => {
     history.push('/')
+  }, [])
+
+  const closeModal = useCallback(() => {
+    history.goBack()
   }, [])
 
 
@@ -63,13 +66,13 @@ export const App = () => {
           </Route>
 
           <Route path="/feed/:id" >
-            <Modal onClose={closeIngredientsModal}>
+            <Modal onClose={closeModal}>
               <OrderInfo />
             </Modal>
           </Route>
 
           <Route path="/profile/orders/:id" >
-            <Modal onClose={closeIngredientsModal}>
+            <Modal onClose={closeModal}>
               <OrderInfoUser />
             </Modal>
           </Route>

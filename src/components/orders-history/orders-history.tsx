@@ -7,14 +7,14 @@ export const OrdersHistory = () => {
   const orders = useSelector(state => state.webSocket.orders);
 
   return (
-    <section>
+    <>
       <ul className={styles.scroll}>
         {orders.map(order =>
-          <li key={order._id}>
+          <li className={styles.block} key={order._id}>
             <OrderCard order={order} />
           </li>
         )}
       </ul>
-    </section>
+    </>
   )
 }

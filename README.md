@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# Проектная работа "Stellar Burgers"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Четвертая проектная работа, созданная на факультете "Фронтенд-разработчик Bootcamp", Яндекс.Практикум.**  
+Сервис Stellar Burgers - интерактивное приложение бургерной, позволяющее оформить онлайн-заказ зарегистрированным пользователям, самостоятельно собрав бургер из понравившихся ингредиентов. В приложении можно зарегистрироваться и зайти в личный кабинет, где можно отредактировать личные данные, восстановить пароль, отслеживать готовность заказа, а так же просматривать общие заказы. База данных по пользователям и заказам храниться на сервере.
 
-## Available Scripts
+### При создании были изучены и применены технологии:
+* React,
+* Redux,
+* TypeScript,
+* Redux Thunk (запросы к серверу проходят через усилители),
+* React DnD,
+* React Router.
 
-In the project directory, you can run:
+### А также использованы уже известные:
+* HTML5,
+* CSS3,
+* JavaScript (в процессе проект полностью переписан на TypeScript),
+* npm,
+* git,
+* BEM,
+* Grid Layout и другие.
 
-### `npm start`
+### Доработка проекта будет включать:
+* оптимизация кода,
+* добавить span на изображения ингредиентов в карточках заказа (не более шести картинок),
+* доработка refreshToken,
+* покрытие приложения тестами,
+* оптимизировать мобильную версию приложения
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- **Ссылка на сайт**  
+* [Stellar Burgers](https://polinashchepochkina.github.io/mesto-project-bootcamp/) -->
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Figma**  
+* [Ссылка на макет в Figma 1](https://www.figma.com/file/tLatiSwpQmOsE3nSReMmqN/React_Bootcamp_Проектные-задачи_external_link?node-id=702%3A33&t=TfLq9t4kLJhJGfK3-0)
+* [Ссылка на макет в Figma 2](https://www.figma.com/file/tLatiSwpQmOsE3nSReMmqN/React_Bootcamp_Проектные-задачи_external_link?node-id=2973%3A2263&t=TfLq9t4kLJhJGfK3-0)
+* [Ссылка на макет в Figma 3](https://www.figma.com/file/tLatiSwpQmOsE3nSReMmqN/React_Bootcamp_Проектные-задачи_external_link?node-id=6291%3A3417&t=TfLq9t4kLJhJGfK3-0)
+* [Ссылка на макет в Figma 4](https://www.figma.com/file/tLatiSwpQmOsE3nSReMmqN/React_Bootcamp_Проектные-задачи_external_link?node-id=16791%3A2880&t=TfLq9t4kLJhJGfK3-0)
 
-### `npm test`
+### Инструкция по установке
+Скачать или клонировать репозиторий
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# установка зависимостей
+$ npm install
 
-### `npm run build`
+# запуск сервера на localhost:3000
+$ npm run start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# сборка в продакшн
+$ npm run build
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# запуск сервера localhost:3000 из папки build
+$ npm run build
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# запуск тестирования приложения
+$ npm run test

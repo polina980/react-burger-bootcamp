@@ -19,3 +19,7 @@
 .scroll::-webkit-scrollbar-thumb {
   background-color: #8585AD;
 }
+
+.block {
+  width: 584px;
+}

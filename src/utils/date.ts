@@ -1,5 +1,5 @@
 //Получить дату создания заказа
-const getDaysForCard = (days: number) => (
+const getDays = (days: number) => (
   days === 0 ? 'Сегодня'
     : days === 1 ? 'Вчера'
       : days > 1 ? `${days} дня(-ей) назад`
@@ -7,7 +7,7 @@ const getDaysForCard = (days: number) => (
 )
 
 //Сформировать дату создания заказа
-export const conversionDateForCard = (date: string) => {
+export const conversionDate = (date: string) => {
   const dayCreated: Date = new Date(date);
   const today: Date = new Date();
   today.setHours(0, 0, 0, 0);
@@ -15,5 +15,5 @@ export const conversionDateForCard = (date: string) => {
   const hours = dayCreated.getHours() > 9 ? dayCreated.getHours() : `0${dayCreated.getHours()}`
   const min = dayCreated.getMinutes() > 9 ? dayCreated.getMinutes() : `0${dayCreated.getMinutes()}`
 
-  return `${getDaysForCard(diffTime)}, ${hours}:${min} i-GMT+${dayCreated.getTimezoneOffset() * (-1) / 60}`;
+  return `${getDays(diffTime)}, ${hours}:${min} i-GMT+${dayCreated.getTimezoneOffset() * (-1) / 60}`;
 }

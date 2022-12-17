@@ -42,7 +42,8 @@ export const LoginPage = () => {
             <Button
                 type="primary"
                 htmlType="submit"
-                size="medium">
+                size="medium"
+            >
                 Войти
             </Button>
             <div className={`${styles.line} mt-20`}>

@@ -24,7 +24,8 @@ export const PriceCount: FC<TPriceCount> = ({ onClick }) => {
                 type="primary"
                 htmlType="submit"
                 size="large"
-                onClick={onClick}>
+                onClick={onClick}
+            >
                 Оформить заказ
             </Button>
         </div>
