@@ -11,7 +11,7 @@ export const LoginPage = () => {
     const dispatch = useDispatch();
     const authorization = useSelector(state => state.getLogin.login);
 
-    const { values, setValues } = useForm({ email: '', password: '' })
+    const { values, handleChange } = useForm({ email: '', password: '' })
 
     const handleLogin: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
@@ -27,14 +27,14 @@ export const LoginPage = () => {
         <form className={styles.form} onSubmit={handleLogin}>
             <h3 className="text text_type_main-medium mb-6">Вход</h3>
             <EmailInput
-                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, email: event.target.value })}
+                onChange={handleChange}
                 value={values.email}
                 name={'email'}
                 isIcon={false}
                 extraClass="mb-6"
             />
             <PasswordInput
-                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, password: event.target.value })}
+                onChange={handleChange}
                 value={values.password}
                 name={'password'}
                 extraClass="mb-6"

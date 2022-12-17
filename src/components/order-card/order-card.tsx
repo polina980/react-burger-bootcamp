@@ -43,15 +43,27 @@ export const OrderCard: FC<TOrderProps> = ({ order }) => {
         }
     }
 
+    const getStatus = (status: string) => {
+        if (status === 'done') {
+            return 'Выполнен'
+        } else if (status === 'created') {
+            return 'Создан'
+        } else if (status === 'pending') {
+            return 'Готовится'
+        }
+        return false;
+    }
     const date = conversionDate(order.createdAt);
 
     return (
         <div onClick={openOrderDetails} className={styles.main}>
             <div className={styles.numbers}>
-                <p className='text text_type_digits-default mt-6'>#{order.number}</p>
-                <p className='text text_type_main-default text_color_inactive mt-6'>{date}</p>
+                <p className='text text_type_digits-default'>#{order.number}</p>
+                <p className='text text_type_main-default text_color_inactive'>{date}</p>
             </div>
-            <h3 className={`${styles.text} text text_type_main-medium mt-6 mb-6`}>{order.name}</h3>
+            <h3 className={`${styles.text} text text_type_main-medium mt-6`}>{order.name}</h3>
+            <p className='text text_type_main-default mt-2' style={order?.status === 'done' ? { color: '#00CCCC' } : { color: '#FFFFFF' }}>{getStatus(order?.status)}</p>
+            <p className={`${styles.text} text text_type_main-medium mt-6`}></p>
             <div className={styles.ingredients}>
                 <ul className={styles.list}>
                     {orderIngredientsForImage.map(image =>
@@ -60,8 +72,8 @@ export const OrderCard: FC<TOrderProps> = ({ order }) => {
                         </li>
                     )}
                 </ul>
-                <div className={`${styles.price} mt-6 mb-6`}>
-                    <p className='text text_type_digits-default ml-6 mr-2'>{totalOrderPrice}</p>
+                <div className={styles.price}>
+                    <p className='text text_type_digits-default mr-2'>{totalOrderPrice}</p>
                     <CurrencyIcon type="primary" />
                 </div>
             </div>

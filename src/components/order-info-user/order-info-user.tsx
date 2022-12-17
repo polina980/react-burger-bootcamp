@@ -34,13 +34,24 @@ export const OrderInfoUser = () => {
         return null
     }
 
+    const getStatus = (status: string) => {
+        if (status === 'done') {
+            return 'Выполнен'
+        } else if (status === 'created') {
+            return 'Создан'
+        } else if (status === 'pending') {
+            return 'Готовится'
+        }
+        return false;
+    }
+
     const date = conversionDate(order.createdAt);
 
     return (
         <main className={styles.info}>
             <p className='text text_type_digits-default mb-10'>#{order?.number}</p>
             <h3 className='text text_type_main-medium mb-3'>{order?.name}</h3>
-            <p className={`${styles.textColor} text text_type_main-default mb-15`}>Выполнен</p>
+            <p className='text text_type_main-default mb-15' style={order?.status === 'done' ? { color: '#00CCCC' } : { color: '#FFFFFF' }}>{getStatus(order?.status)}</p>
             <p className='text text_type_main-medium mb-6'>Состав:</p>
             <ul className={styles.scroll}>
                 {orderIngredientsForImage!

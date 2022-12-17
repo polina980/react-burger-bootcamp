@@ -11,7 +11,7 @@ export const Registration = () => {
     const dispatch = useDispatch();
     const authorization = useSelector(state => state.registration.success);
 
-    const { values, setValues } = useForm({ name: '', email: '', password: '' });
+    const { values, handleChange } = useForm({ name: '', email: '', password: '' });
 
     const registrationData: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault();
@@ -26,7 +26,7 @@ export const Registration = () => {
         <form className={styles.form} onSubmit={(event) => registrationData(event)} >
             <h3 className="text text_type_main-medium mb-6">Регистрация</h3>
             <Input
-                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, name: event.target.value })}
+                onChange={handleChange}
                 type={'text'}
                 placeholder={'Имя'}
                 value={values.name}
@@ -34,13 +34,13 @@ export const Registration = () => {
                 extraClass="mb-6"
             />
             <EmailInput
-                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, email: event.target.value })}
+                onChange={handleChange}
                 value={values.email}
                 name={'email'}
                 extraClass="mb-6"
             />
             <PasswordInput
-                onChange={(event: ChangeEvent<HTMLInputElement>) => setValues({ ...values, password: event.target.value })}
+                onChange={handleChange}
                 value={values.password}
                 name={'password'}
                 extraClass="mb-6"

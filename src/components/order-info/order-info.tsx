@@ -43,7 +43,7 @@ export const OrderInfo = () => {
             return 'Готовится'
         }
         return false;
-    };
+    }
 
     const date = conversionDate(order.createdAt);
 

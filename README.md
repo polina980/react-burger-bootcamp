@@ -37,7 +37,7 @@
 * [Ссылка на макет в Figma 4](https://www.figma.com/file/tLatiSwpQmOsE3nSReMmqN/React_Bootcamp_Проектные-задачи_external_link?node-id=16791%3A2880&t=TfLq9t4kLJhJGfK3-0)
 
 ### Инструкция по установке
-Скачать или клонировать репозиторий
+Скачать или клонировать репозиторий:
 
 1. установка зависимостей
 $ npm install
