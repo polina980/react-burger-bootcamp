@@ -50,6 +50,3 @@ $ npm run build
 
 4. запуск сервера localhost:3000 из папки build
 $ npm run build
-
-5. запуск тестирования приложения
-$ npm run test
