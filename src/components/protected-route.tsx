@@ -18,7 +18,8 @@ export const ProtectedRoute = ({ component, path }: RouteProps) => {
     return <Route path={path} component={component} />
 }
 
-// const ProtectedRoute = ({ onlyForAuth, children, ...rest }) => {
+// export const ProtectedRoute = ({ onlyForAuth, children, ...rest }: RouteProps) => {
+  
 //     const isAuthorized = getCookie("accessToken");
 //     const location = useLocation();
   

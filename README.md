@@ -27,8 +27,8 @@
 * покрытие приложения тестами,
 * оптимизировать мобильную версию приложения
 
-<!-- **Ссылка на сайт**  
-* [Stellar Burgers](https://polinashchepochkina.github.io/mesto-project-bootcamp/) -->
+**Ссылка на сайт**  
+* [Stellar Burgers](https://polinashchepochkina.github.io/react-burger/)
 
 **Figma**  
 * [Ссылка на макет в Figma 1](https://www.figma.com/file/tLatiSwpQmOsE3nSReMmqN/React_Bootcamp_Проектные-задачи_external_link?node-id=702%3A33&t=TfLq9t4kLJhJGfK3-0)

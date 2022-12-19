@@ -19,9 +19,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["cypress", "@4tw/cypress-drag-drop"]
+    "types": [
+      "cypress",
+      "@4tw/cypress-drag-drop"
+    ]
   },
   "include": [
-    "src", "cypress"
+    "src",
+    "cypress"
   ]
 }

@@ -1,12 +1,12 @@
-import { GET_ORDER_SUCCESS } from '../constants/constants';
+import { GET_ORDER_SUCCESS, DELETE_ORDER_SUCCESS } from '../constants/constants';
 import { TUnionAction } from '../actions/interfaces';
 
 type TInitialState = {
-  id: string
+  number: string
 }
 
 export const initialState: TInitialState = {
-  id: ''
+  number: ''
 }
 
 export const orderDetailsReducer = (state = initialState, action: TUnionAction): TInitialState => {
@@ -14,7 +14,13 @@ export const orderDetailsReducer = (state = initialState, action: TUnionAction):
     case GET_ORDER_SUCCESS: {
       return {
         ...state,
-        id: action.payload
+        number: action.payload
+      }
+    }
+    case DELETE_ORDER_SUCCESS: {
+      return {
+        ...state,
+        number: ''
       }
     }
     default: {

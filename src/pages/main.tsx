@@ -5,7 +5,7 @@ import { BurgerIngredients } from '../components/burger-ingredients/burger-ingre
 import { BurgerConstructor } from '../components/burger-constructor/burger-constructor';
 import { PriceCount } from '../components/price-count/price-count';
 import { useHistory } from 'react-router-dom';
-import { getOrderNumber } from '../services/actions/order-details';
+import { getOrderNumber, deleteOrderSuccess } from '../services/actions/order-details';
 import { useDispatch } from '../services/hooks/hooks';
 import { Modal } from '../components/modal/modal';
 import { OrderDetails } from '../components/order-details/order-details';
@@ -36,6 +36,7 @@ export const Main = () => {
 
   const closeOrderModal = useCallback(() => {
     setOrderOpenModal(false)
+    dispatch(deleteOrderSuccess())
     dispatch(clearConstructor())
   }, [])
 

@@ -2,14 +2,18 @@ import {
     orderDetailsReducer as reducer,
     initialState as state
 } from './order-details';
-import { getOrderSuccess } from '../actions/order-details';
-import { id } from '../../utils/test-constants';
+import { deleteOrderSuccess, getOrderSuccess } from '../actions/order-details';
+import { number } from '../../utils/test-constants';
 
 describe('order-details reducer test', () => {
     it('should handle get order details success', () => {
-        expect(reducer(state, getOrderSuccess(id)))
+        expect(reducer(state, getOrderSuccess(number)))
             .toEqual({
-                id: id
+                number: number
             })
+    })
+    it('should return the initial state if delete order number', () => {
+        expect(reducer({ ...state, number: number }, deleteOrderSuccess()))
+            .toEqual(state)
     })
 })

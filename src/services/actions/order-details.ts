@@ -1,6 +1,6 @@
 import { apiBurger } from '../../utils/api';
-import { GET_ORDER_SUCCESS } from '../constants/constants';
-import { IGetOrderSuccess } from '../actions/interfaces';
+import { GET_ORDER_SUCCESS, DELETE_ORDER_SUCCESS } from '../constants/constants';
+import { IGetOrderSuccess, IDeleteOrderSuccess } from '../actions/interfaces';
 import { AppThunk } from '../types/types';
 
 export const getOrderSuccess = (number: string): IGetOrderSuccess => ({
@@ -8,9 +8,9 @@ export const getOrderSuccess = (number: string): IGetOrderSuccess => ({
   payload: number
 })
 
-// export const deleteOrderSuccess = (): IDeleteOrderSuccess => ({
-//   type: DELETE_ORDER_SUCCESS
-// })
+export const deleteOrderSuccess = (): IDeleteOrderSuccess => ({
+  type: DELETE_ORDER_SUCCESS
+})
 
 export const getOrderNumber: AppThunk = (idList: string[]) => {
   return (dispatch) =>
@@ -18,7 +18,6 @@ export const getOrderNumber: AppThunk = (idList: string[]) => {
       .then(({ order: { number } }) => {
         dispatch(getOrderSuccess(number));
       })
-      //.then(() => dispatch(deleteOrderSuccess()))
       .catch((error) => {
         console.log(error)
       })

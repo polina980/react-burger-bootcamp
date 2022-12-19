@@ -10,6 +10,7 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_SUCCESS,
   GET_ORDER_SUCCESS,
+  DELETE_ORDER_SUCCESS,
   PASSWORD_FORGOT_SUCCESS,
   PASSWORD_RESET_SUCCESS,
   REGISTRATION_SUCCESS,
@@ -83,6 +84,10 @@ export interface ILogoutSuccess {
 export interface IGetOrderSuccess {
   readonly type: typeof GET_ORDER_SUCCESS,
   readonly payload: string
+}
+
+export interface IDeleteOrderSuccess {
+  readonly type: typeof DELETE_ORDER_SUCCESS
 }
 
 export interface IPasswordForgotSuccess {
@@ -164,6 +169,7 @@ export type TUnionAction =
   | IGetLoginSuccess
   | ILogoutSuccess
   | IGetOrderSuccess
+  | IDeleteOrderSuccess
   | IPasswordForgotSuccess
   | IPasswordResetSuccess
   | IRegistrationSuccess

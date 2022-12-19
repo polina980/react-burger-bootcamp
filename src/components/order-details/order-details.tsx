@@ -5,7 +5,7 @@ import Loader from '../loader/loader';
 
 export const OrderDetails = () => {
 
-  const orderId = useSelector(state => state.orderDetails.id)
+  const orderId = useSelector(state => state.orderDetails.number)
 
   if (!orderId) {
     return (
