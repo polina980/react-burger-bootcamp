@@ -1,9 +1,10 @@
-import { Middleware } from 'redux';
-import { IWsActions } from '../actions/interfaces';
+import { Middleware, MiddlewareAPI } from 'redux';
+import { TMiddlewareActions } from '../actions/interfaces';
+import { AppDispatch, RootState } from '../types/types';
 
-export const socketMiddleware = (wsUrl: () => string, wsActions: IWsActions): Middleware => {
+export const socketMiddleware = (wsUrl: () => string, wsActions: TMiddlewareActions): Middleware => {
 
-    return (store) => {
+    return (store: MiddlewareAPI<AppDispatch, RootState>) => {
         let socket: WebSocket | null = null;
         return next => action => {
             const { dispatch } = store;
@@ -18,8 +19,8 @@ export const socketMiddleware = (wsUrl: () => string, wsActions: IWsActions): Mi
                     socket.onerror = () => {
                         dispatch({ type: onError });
                     };
-                    socket.onmessage = (evt) => {
-                        const { data } = evt;
+                    socket.onmessage = (event) => {
+                        const { data } = event;
                         const parsedData = JSON.parse(data);
                         const { success } = parsedData;
                         success && dispatch({ type: onOrders, payload: parsedData });

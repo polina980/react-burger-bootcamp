@@ -8,12 +8,17 @@ export const getOrderSuccess = (number: string): IGetOrderSuccess => ({
   payload: number
 })
 
+// export const deleteOrderSuccess = (): IDeleteOrderSuccess => ({
+//   type: DELETE_ORDER_SUCCESS
+// })
+
 export const getOrderNumber: AppThunk = (idList: string[]) => {
   return (dispatch) =>
     apiBurger.requestOrderDetails(idList)
       .then(({ order: { number } }) => {
         dispatch(getOrderSuccess(number));
       })
+      //.then(() => dispatch(deleteOrderSuccess()))
       .catch((error) => {
         console.log(error)
       })

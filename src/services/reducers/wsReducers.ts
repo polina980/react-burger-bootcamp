@@ -14,8 +14,8 @@ import { TOrder } from '../types/types';
 type TInitialState = {
     wsConnection: boolean,
     orders: Array<TOrder> | [],
-    total: number | null,
-    totalToday: number | null
+    total?: number | null,
+    totalToday?: number | null
 }
 
 export const initialState: TInitialState = {
@@ -23,6 +23,11 @@ export const initialState: TInitialState = {
     orders: [],
     total: null,
     totalToday: null
+}
+
+export const initialStateUser: TInitialState = {
+    wsConnection: false,
+    orders: []
 }
 
 export const wsReducer = (state = initialState, action: TUnionAction): TInitialState => {
@@ -63,7 +68,7 @@ export const wsReducer = (state = initialState, action: TUnionAction): TInitialS
     }
 }
 
-export const wsReducerUser = (state = initialState, action: TUnionAction): TInitialState => {
+export const wsReducerUser = (state = initialStateUser, action: TUnionAction): TInitialState => {
     switch (action.type) {
         case WS_CONNECTION_SUCCESS_USER: {
             return {

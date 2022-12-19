@@ -27,13 +27,14 @@ import {
   WS_GET_ORDERS_USER
 } from '../constants/constants';
 import { TIngredientType, TUser, TOrders } from '../types/types';
+import { IWsActions, IWsActionsUser } from './wsActions';
 
-export interface ISetIgredientDetails {
+export interface ISetIngredientDetails {
   readonly type: typeof SET_INGREDIENT_DETAILS,
   readonly payload: TIngredientType
 }
 
-export interface IDeleteIgredientDetails {
+export interface IDeleteIngredientDetails {
   readonly type: typeof DELETE_INGREDIENT_DETAILS
 }
 
@@ -151,10 +152,9 @@ export interface IWsGetOrdersUser {
   readonly payload: TOrders
 }
 
-
 export type TUnionAction =
-  | ISetIgredientDetails
-  | IDeleteIgredientDetails
+  | ISetIngredientDetails
+  | IDeleteIngredientDetails
   | ISetBun
   | IAddIngredient
   | IDeleteIngredient
@@ -194,10 +194,7 @@ export type TUnionWsActionUser =
   | IWsConnectionClosedUser
   | IWsGetOrdersUser
 
-export interface IWsActions {
-  readonly wsInit: string
-  readonly onOpen: string
-  readonly onClose: string
-  readonly onError: string
-  readonly onOrders: string
-}
+
+export type TMiddlewareActions =
+  | IWsActions
+  | IWsActionsUser

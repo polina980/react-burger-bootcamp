@@ -12,7 +12,7 @@ type TInitialState = {
   }
 }
 
-const initialState: TInitialState = {
+export const initialState: TInitialState = {
   ingredientDetails: {}
 }
 

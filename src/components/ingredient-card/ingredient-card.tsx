@@ -3,7 +3,7 @@ import styles from './ingredient-card.module.css';
 import { useDrag } from 'react-dnd';
 import { useSelector, useDispatch } from '../../services/hooks/hooks';
 import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components';
-import { setIgredientDetails } from '../../services/actions/ingredient-details';
+import { setIngredientDetails } from '../../services/actions/ingredient-details';
 import { TIngredientCard } from '../../services/types/types';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -30,7 +30,7 @@ export const IngredientCard: FC<TIngredientCard> = ({ ingredient }) => {
 
   const handleIngredientClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    dispatch(setIgredientDetails(ingredient))
+    dispatch(setIngredientDetails(ingredient))
   }
 
   return (

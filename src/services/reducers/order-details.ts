@@ -5,7 +5,7 @@ type TInitialState = {
   id: string
 }
 
-const initialState: TInitialState = {
+export const initialState: TInitialState = {
   id: ''
 }
 
