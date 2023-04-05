@@ -26,11 +26,11 @@
 2. установите зависимоти  
  $ npm install
 3. запуск сервера на localhost:3000  
- $ npm run start
+ $ npm run start  
 4. сборка в продакшн  
- $ npm run build
+ $ npm run build  
 5. запуск тестирования приложения  
- $ npm run test
+ $ npm run test  
 
 **Ссылка на сайт**  
 * [Stellar Burgers](https://polinashchepochkina.github.io/react-burger-bootcamp/)
