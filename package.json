@@ -1,5 +1,5 @@
 {
-  "name": "react-burger",
+  "name": "react-burger-bootcamp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -58,7 +58,7 @@
     "@testing-library/user-event": "13.5.0",
     "@types/react-router-dom": "5.3.3",
     "cypress": "11.2.0",
-    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-cypress": "2.12.1",
     "gh-pages": "4.0.0",
     "jest": "27.5.1",
     "prop-types": "15.8.1"
