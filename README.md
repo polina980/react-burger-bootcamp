@@ -5,27 +5,32 @@
 
 ### При создании были изучены и применены технологии:
 * React,
-* Redux,
+* Redux (redux-thunk),
 * TypeScript,
-* Redux Thunk (запросы к серверу проходят через усилители),
 * React DnD,
 * React Router.
 
 ### А также использованы уже известные:
-* HTML5,
-* CSS3,
+* HTML, CSS,
 * JavaScript (в процессе проект полностью переписан на TypeScript),
-* npm,
-* git,
-* BEM,
-* Grid Layout и другие.
+* npm, git, BEM, Grid Layout и другие.
 
 ### Доработка проекта будет включать:
-* оптимизация кода,
 * добавить span на изображения ингредиентов в карточках заказа (не более шести картинок),
-* доработка refreshToken,
-* покрытие приложения тестами,
-* оптимизировать мобильную версию приложения
+* доработка refreshToken.
+
+### Инструкция по запуску проекта
+Чтобы запустить проект на своем компьютере, выполните следующие действия:
+
+1. клонируйте репозиторий
+2. установите зависимоти  
+ $ npm install
+3. запуск сервера на localhost:3000
+ $ npm run start
+4. сборка в продакшн
+ $ npm run build
+5. запуск тестирования приложения
+ $ npm run test
 
 **Ссылка на сайт**  
 * [Stellar Burgers](https://polinashchepochkina.github.io/react-burger/)
@@ -35,21 +40,3 @@
 * [Ссылка на макет в Figma 2](https://www.figma.com/file/tLatiSwpQmOsE3nSReMmqN/React_Bootcamp_Проектные-задачи_external_link?node-id=2973%3A2263&t=TfLq9t4kLJhJGfK3-0)
 * [Ссылка на макет в Figma 3](https://www.figma.com/file/tLatiSwpQmOsE3nSReMmqN/React_Bootcamp_Проектные-задачи_external_link?node-id=6291%3A3417&t=TfLq9t4kLJhJGfK3-0)
 * [Ссылка на макет в Figma 4](https://www.figma.com/file/tLatiSwpQmOsE3nSReMmqN/React_Bootcamp_Проектные-задачи_external_link?node-id=16791%3A2880&t=TfLq9t4kLJhJGfK3-0)
-
-### Инструкция по установке
-Скачать или клонировать репозиторий:
-
-1. установка зависимостей
-$ npm install
-
-2. запуск сервера на localhost:3000
-$ npm run start
-
-3. сборка в продакшн
-$ npm run build
-
-4. запуск сервера localhost:3000 из папки build
-$ npm run build
-
-5. запуск тестирования приложения
-$ npm run test
