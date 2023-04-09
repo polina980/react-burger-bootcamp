@@ -46,9 +46,7 @@ export const Main = () => {
         <BurgerIngredients />
         <div className={styles.twoBlocks}>
           <BurgerConstructor />
-          {/* {buns.length > 0 ? */}
-            <PriceCount onClick={handleOrderOpenModal} />
-            {/* : null} */}
+          <PriceCount onClick={handleOrderOpenModal} />
         </div>
       </main>
 

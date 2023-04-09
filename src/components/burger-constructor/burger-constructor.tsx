@@ -65,7 +65,8 @@ export const BurgerConstructor = () => {
                     index={index}
                     id={element.id}
                     key={element.id}
-                    deleteElement={deleteElement} />
+                    deleteElement={deleteElement}
+                  />
                 )
             }
             )}

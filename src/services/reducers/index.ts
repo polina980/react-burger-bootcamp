@@ -22,4 +22,4 @@ export const rootReducer = combineReducers({
   userInfo: getUserInfoReducer,
   webSocket: wsReducer,
   webSocketUser: wsReducerUser
-})
+});

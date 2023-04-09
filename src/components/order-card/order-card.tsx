@@ -62,7 +62,12 @@ export const OrderCard: FC<TOrderProps> = ({ order }) => {
                 <p className='text text_type_main-default text_color_inactive'>{date}</p>
             </div>
             <h3 className={`${styles.text} text text_type_main-medium mt-6`}>{order.name}</h3>
-            <p className='text text_type_main-default mt-2' style={order?.status === 'done' ? { color: '#00CCCC' } : { color: '#FFFFFF' }}>{getStatus(order?.status)}</p>
+            <p className='text text_type_main-default mt-2' style={order?.status === 'done'
+                ? { color: '#00CCCC' }
+                : { color: '#FFFFFF' }}
+            >
+                {getStatus(order?.status)}
+            </p>
             <p className={`${styles.text} text text_type_main-medium mt-6`}></p>
             <div className={styles.ingredients}>
                 <ul className={styles.list}>
