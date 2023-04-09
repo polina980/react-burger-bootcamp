@@ -1,0 +1,12 @@
+.addIngredients {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 534px;
+  min-height: 268px;
+  border: 2px solid #2b2b33;
+  border-radius: 15px;
+  margin: 16px 0 16px 48px;
+  color: #2b2b33;
+}

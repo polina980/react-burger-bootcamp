@@ -1,0 +1,11 @@
+.emptyElements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #2b2b33;
+  border-radius: 40px;
+  height: 76px;
+  width: 532px;
+  margin-left: 48px;
+  color: #2b2b33;
+}
